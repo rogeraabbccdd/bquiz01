@@ -47,15 +47,12 @@
 							$start = $page*5-5;
 							$ol = $start +1;
 						?>
-						 <ol start=<?=$ol?> class="sswww" style="text-align:left;">
+						<ol start=<?=$ol?> class="ssaa" style="text-align:left;">
 						<?php
 							$result = mysqli_query($link, "select * from news");
 							$total = mysqli_num_rows($result);
 							
-							if($page == 1)
-								$result = mysqli_query($link, "select * from news order by id limit 5");
-							else
-								$result = mysqli_query($link, "select * from news order by id limit ".$start.", 5");
+							$result = mysqli_query($link, "select * from news order by id limit ".$start.", 5");
 							
 							$totalp = ceil($total/5);
 							while($row = mysqli_fetch_array($result))
@@ -63,7 +60,9 @@
 								$part_text = mb_substr($row["text"],0,20 );
 								echo "<li>".$part_text."<span class='all' style='display:none'>".$row["text"]."</span></li>";
 							}
-							
+						?>
+						</ol>	
+						<?php						
 							$lp = $page -1;
 							$np = $page +1;
 							
@@ -81,22 +80,21 @@
 							
 							echo '<a class="bl" style="font-size:30px;" href="?p='.$np.'">></a>';
 						?>
-						</ol>
     </div>
 	                </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
-						$(".sswww li").hover(
+						$(".ssaa li").hover(
 							function ()
 							{
-								$("#alt").html("<pre>"+$(this).children(".all").html()+"</pre>").css({"top":$(this).offset().top-50})
-								$("#alt").show()
+								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>")
+								$("#altt").show()
 							}
 						)
-						$(".sswww li").mouseout(
+						$(".ssaa li").mouseout(
 							function()
 							{
-								$("#alt").hide()
+								$("#altt").hide()
 							}
 						)
                         </script>

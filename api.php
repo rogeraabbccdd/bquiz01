@@ -1,8 +1,6 @@
 <?php
 	include "sql.php";
 	
-	$time = strtotime("now");
-	
 	$from = $_GET["from"];
 	if($from == "titleupload")
 	{
