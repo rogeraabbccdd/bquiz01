@@ -155,8 +155,10 @@
 		<?php
 			$lp = $page -1;
 			$np = $page +1;
-			if($page > 1)
-				echo '<a class="bl" style="font-size:30px;" href="?redo=image&p='.$lp.'"><</a>';
+			
+			if($lp<1)	$lp = 1;
+			if($np>$totalp)	$np = $totalp;
+			echo '<a class="bl" style="font-size:30px;" href="?redo=image&p='.$lp.'"><</a>';
 			
 			for($i = 1; $i<=$totalp; $i++)
 			{
@@ -166,8 +168,7 @@
 					echo '<a class="bl" style="font-size:50px;" href="?redo=image&p='.$i.'">'.$i.'</a>';
 			}
 			
-			if($page < $totalp)
-				echo '<a class="bl" style="font-size:30px;" href="?redo=image&p='.$np.'">></a>';
+			echo '<a class="bl" style="font-size:30px;" href="?redo=image&p='.$np.'">></a>';
 		?>
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>
@@ -250,8 +251,11 @@
 		<?php
 			$lp = $page -1;
 			$np = $page +1;
-			if($page > 1)
-				echo '<a class="bl" style="font-size:30px;" href="?redo=news&p='.$lp.'"><</a>';
+			
+			if($lp<1)	$lp = 1;
+			if($np>$totalp)	$np = $totalp;
+			
+			echo '<a class="bl" style="font-size:30px;" href="?redo=news&p='.$lp.'"><</a>';
 			
 			for($i = 1; $i<=$totalp; $i++)
 			{
@@ -261,8 +265,7 @@
 					echo '<a class="bl" style="font-size:50px;" href="?redo=news&p='.$i.'">'.$i.'</a>';
 			}
 			
-			if($page < $totalp)
-				echo '<a class="bl" style="font-size:30px;" href="?redo=news&p='.$np.'">></a>';
+			echo '<a class="bl" style="font-size:30px;" href="?redo=news&p='.$np.'">></a>';
 		?>
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>
