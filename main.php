@@ -58,8 +58,8 @@
 		?>
 			<tr>
 				<td width="68%"><input type="text" name="text[]" value="<?=$row["text"]?>" style="width:95%"></td>
-				<td width="7%"><input type="checkbox" name="display<?=$row["id"]?>" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="7%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="7%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 			</tr>
 		<?php
 			}
@@ -95,8 +95,8 @@
 		?>
 			<tr>
 				<td width="68%"><embed src="img/<?=$row["file"]?>"></embed></td>
-				<td width="7%"><input type="checkbox" name="display<?=$row["id"]?>" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="7%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="7%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 			<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=mvimupdate&id=<?=$row["id"]?>&#39;)" value="更換動畫"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 						</tr>
 		<?php
@@ -144,8 +144,8 @@
 		?>
 			<tr>
 				<td width="68%"><img src="img/<?=$row["file"]?>" width="100" height="68"></td>
-				<td width="7%"><input type="checkbox" name="display<?=$row["id"]?>" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="7%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="7%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 			<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=imageupdate&id=<?=$row["id"]?>&#39;)" value="更換動畫"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 						</tr>
 		<?php
@@ -240,8 +240,8 @@
 		?>
 			<tr>
 				<td width="68%"><textarea name="text<?=$row["id"]?>"><?=$row["text"]?></textarea></td>
-				<td width="7%"><input type="checkbox" name="display<?=$row["id"]?>" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="7%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"></td>
+				<td width="7%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"></td>
 			<td><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 						</tr>
 		<?php
@@ -293,9 +293,9 @@
 			{
 		?>
 			<tr>
-				<td width="68%"><input type="text" name="acc<?=$row["id"]?>"  value="<?=$row["acc"]?>"></td>
-				<td width="7%"><input type="password" name="pass<?=$row["id"]?>"  value="<?=$row["pass"]?>" ></td>
-				<td width="7%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="68%"><input type="text" name="acc[]"  value="<?=$row["acc"]?>"></td>
+				<td width="7%"><input type="password" name="pass[]"  value="<?=$row["pass"]?>" ></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 			</tr>
 		<?php
 			}
@@ -336,12 +336,13 @@
 				$sub = mysqli_num_rows($result2);
 		?>
 			<tr>
-				<td width="16%"><input type="text" name="text<?=$row["id"]?>"  value="<?=$row["text"]?>" style="width:90%"></td>
-				<td width="16%"><input type="text" name="href<?=$row["id"]?>"  value="<?=$row["href"]?>" style="width:90%"></td>
+				<td width="16%"><input type="text" name="text[]"  value="<?=$row["text"]?>" style="width:90%"></td>
+				<td width="16%"><input type="text" name="href[]"  value="<?=$row["href"]?>" style="width:90%"></td>
 				<td width="16%"><?=$sub?></td>
-				<td width="16%"><input type="checkbox" name="display<?=$row["id"]?>" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="16%"><input type="checkbox" name="delete<?=$row["id"]?>"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
-				<td width="16%"><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=menuupdate&id=<?=$row["id"]?>&#39;)" value="編輯次選單"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="16%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
+				<td width="16%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>">
+				<input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
+				<td width="16%"><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=menuupdate&id=<?=$row["id"]?>&#39;)" value="編輯次選單"></td>
 			</tr>
 		<?php
 			}

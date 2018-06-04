@@ -158,9 +158,9 @@
 				{
 					?>
 					<tr>
-					<td><input type="text" name="text<?=$row["id"]?>"  value="<?=$row["text"]?>"></td>
-					<td><input type="text" name="href<?=$row["id"]?>"  value="<?=$row["href"]?>"></td>
-					<td><input type="checkbox" name="delete<?=$row["id"]?>"></td>
+					<td><input type="text" name="text[]"  value="<?=$row["text"]?>"></td>
+					<td><input type="text" name="href[]"  value="<?=$row["href"]?>"></td>
+					<td><input type="checkbox" name="delete[]" value="<?=$row["id"]?>"></td>
 					<input type="hidden" name="id" value="<?=$row["id"]?>">
 					</tr>
 					<?php
@@ -172,7 +172,7 @@
 		</form>
 		<script>
 		function moresub(){
-			let mstr='<tr><td><input type="text" name="text2[]"  value=""></td><td><input type="text" name="href2[]"  value=""></td><td><input type="checkbox" name="del"></td></tr>';
+			let mstr='<tr><td><input type="text" name="text2[]"  value=""></td><td><input type="text" name="href2[]"  value=""></td><td><input type="checkbox" name="del2[]"></td></tr>';
 			$("#sub").append(mstr);
 		}
 		</script>
@@ -188,7 +188,6 @@
 			<tr>
 				<td>主選單名稱</td>
 				<td>主選單連結網址</td>
-				<td>刪除</td>
 			</tr>
 			<tr>
 				<td><input type="text" name="text"  value=""></td>
@@ -199,7 +198,7 @@
 		</form>
 		<script>
 		function moresub(){
-			let mstr='<tr><td><input type="text" name="text2[]"  value=""></td><td><input type="text" name="href2[]"  value=""></td><td><input type="checkbox" name="del"></td></tr>';
+			let mstr='<tr><td><input type="text" name="text2[]"  value=""></td><td><input type="text" name="href2[]"  value=""></td><td><input type="checkbox" name="del2[]"></td></tr>';
 			$("#sub").append(mstr);
 		}
 		</script>

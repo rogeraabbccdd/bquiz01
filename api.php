@@ -42,18 +42,22 @@
 	}
 	elseif($from == "advert")
 	{
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
+		{
+			mysqli_query($link, "delete from advert where id = '".$del_id."'");
+		}
+		
+		$display = $_POST["display"];
+		mysqli_query($link, "update advert set display = 0");
+		foreach($display as $dis_id)
+		{
+			mysqli_query($link, "update advert set display = 1 where id = '".$dis_id."'");
+		}
+		
 		for($i = 0; $i < count($_POST["id"]); $i++)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from advert where id = '".$_POST["id"][$i]."'");
-			
-			else
-			{
-				if(!empty($_POST["display".$_POST["id"][$i]]))
-					mysqli_query($link, "update advert set text = '".$_POST["text"][$i]."' , display = 1 where id = '".$_POST["id"][$i]."'");
-				else
-					mysqli_query($link, "update advert set text = '".$_POST["text"][$i]."' , display = 0 where id = '".$_POST["id"][$i]."'");
-			}
+			mysqli_query($link, "update advert set text = '".$_POST["text"][$i]."' where id = '".$_POST["id"][$i]."'");
 		}
 		header("location:admin.php?redo=ad");
 	}
@@ -77,19 +81,19 @@
 	}
 	elseif($from == "mvim")
 	{
-		for($i = 0; $i < count($_POST["id"]); $i++)
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from animate where id = '".$_POST["id"][$i]."'");
-			
-			else
-			{
-				if(!empty($_POST["display".$_POST["id"][$i]]))
-					mysqli_query($link, "update animate set display = 1 where id = '".$_POST["id"][$i]."'");
-				else
-					mysqli_query($link, "update animate set display = 0 where id = '".$_POST["id"][$i]."'");
-			}
+			mysqli_query($link, "delete from animate where id = '".$del_id."'");
 		}
+		
+		$display = $_POST["display"];
+		mysqli_query($link, "update animate set display = 0");
+		foreach($display as $dis_id)
+		{
+			mysqli_query($link, "update animate set display = 1 where id = '".$dis_id."'");
+		}
+		
 		header("location:admin.php?redo=mvim");
 	}
 	elseif($from == "imageupload")
@@ -103,7 +107,7 @@
 	}
 	elseif($from == "imageupdate")
 	{
-			$filename = strtotime("now");
+		$filename = strtotime("now");
 		$ext = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 		$filename .= ".".$ext;
 		copy($_FILES["file"]["tmp_name"], "./img/".$filename);
@@ -112,19 +116,19 @@
 	}
 	elseif($from == "image")
 	{
-		for($i = 0; $i < count($_POST["id"]); $i++)
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from gallery where id = '".$_POST["id"][$i]."'");
-			
-			else
-			{
-				if(!empty($_POST["display".$_POST["id"][$i]]))
-					mysqli_query($link, "update gallery set display = 1 where id = '".$_POST["id"][$i]."'");
-				else
-					mysqli_query($link, "update gallery set display = 0 where id = '".$_POST["id"][$i]."'");
-			}
+			mysqli_query($link, "delete from gallery where id = '".$del_id."'");
 		}
+		
+		$display = $_POST["display"];
+		mysqli_query($link, "update gallery set display = 0");
+		foreach($display as $dis_id)
+		{
+			mysqli_query($link, "update gallery set display = 1 where id = '".$dis_id."'");
+		}
+		
 		header("location:admin.php?redo=image");
 	}
 	elseif($from == "total")
@@ -144,19 +148,19 @@
 	}
 	elseif($from == "news")
 	{
-		for($i = 0; $i < count($_POST["id"]); $i++)
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from news where id = '".$_POST["id"][$i]."'");
-			
-			else
-			{
-				if(!empty($_POST["display".$_POST["id"][$i]]))
-					mysqli_query($link, "update news set display = 1, text = '".$_POST["text".$_POST["id"][$i]]."' where id = '".$_POST["id"][$i]."'");
-				else
-					mysqli_query($link, "update news set display = 0 , text = '".$_POST["text".$_POST["id"][$i]]."' where id = '".$_POST["id"][$i]."'");
-			}
+			mysqli_query($link, "delete from news where id = '".$del_id."'");
 		}
+		
+		$display = $_POST["display"];
+		mysqli_query($link, "update news set display = 0");
+		foreach($display as $dis_id)
+		{
+			mysqli_query($link, "update news set display = 1 where id = '".$dis_id."'");
+		}
+		
 		header("location:admin.php?redo=news");
 	}
 	elseif($from == "adminadd")
@@ -166,60 +170,72 @@
 	}
 	elseif($from == "admin")
 	{
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
+		{
+			mysqli_query($link, "delete from admin where id = '".$del_id."'");
+		}
+
 		for($i = 0; $i < count($_POST["id"]); $i++)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from admin where id = '".$_POST["id"][$i]."'");
-			
-			else
-				mysqli_query($link, "update admin set acc = '".$_POST["acc".$_POST["id"][$i]]."',  pass = '".$_POST["pass".$_POST["id"][$i]]."' where id = '".$_POST["id"][$i]."'");
+			mysqli_query($link, "update admin set acc = '".$_POST["acc"][$i]."',  pass = '".$_POST["pass"][$i]."' where id = '".$_POST["id"][$i]."'");
 		}
+
 		header("location:admin.php?redo=admin");
 	}
 	elseif($from == "menu")
 	{
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
+		{
+			mysqli_query($link, "delete from menu where id = '".$del_id."'");
+		}
+		
+		$display = $_POST["display"];
+		mysqli_query($link, "update menu set display = 0");
+		foreach($display as $dis_id)
+		{
+			mysqli_query($link, "update menu set display = 1 where id = '".$dis_id."'");
+		}
+		
 		for($i = 0; $i < count($_POST["id"]); $i++)
 		{
-			if(!empty($_POST["delete".$_POST["id"][$i]]))
-				mysqli_query($link, "delete from menu where id = '".$_POST["id"][$i]."'");
-			
-			else
-			{
-				if(!empty($_POST["display".$_POST["id"][$i]]))
-					mysqli_query($link, "update menu set text = '".$_POST["text".$_POST["id"][$i]]."',  href = '".$_POST["href".$_POST["id"][$i]]."', display = 1 where id = '".$_POST["id"][$i]."'");
-				else
-					mysqli_query($link, "update menu set text = '".$_POST["text".$_POST["id"][$i]]."',  href = '".$_POST["href".$_POST["id"][$i]]."', display = 0 where id = '".$_POST["id"][$i]."'");
-			}
+			mysqli_query($link, "update menu set text = '".$_POST["text"][$i]."',  href = '".$_POST["href"][$i]."' where id = '".$_POST["id"][$i]."'");
+			echo "update menu set text = '".$_POST["text"][$i]."',  href = '".$_POST["href"][$i]."' where id = '".$_POST["id"][$i]."'";
 		}
+		
 		header("location:admin.php?redo=menu");
 	}
 	elseif($from == "menuupdate")
 	{
-		if(isset($_POST["id"]))
+		print_r($_POST);
+		
+		
+		$delete = $_POST["delete"];
+		foreach($delete as $del_id)
 		{
-			for($i = 0; $i < count($_POST["id"]); $i++)
-			{
-				if(!empty($_POST["delete".$_POST["id"][$i]]))
-					mysqli_query($link, "delete from menu where id = '".$_POST["id"][$i]."'");
-				
-				else
-				{
-					if(!empty($_POST["display".$_POST["id"][$i]]))
-						mysqli_query($link, "update menu set text = '".$_POST["text".$_POST["id"][$i]]."',  href = '".$_POST["href".$_POST["id"][$i]]."', display = 1 where id = '".$_POST["id"][$i]."'");
-					else
-						mysqli_query($link, "update menu set text = '".$_POST["text".$_POST["id"][$i]]."',  href = '".$_POST["href".$_POST["id"][$i]]."', display = 0 where id = '".$_POST["id"][$i]."'");
-				}
-			}
+			mysqli_query($link, "delete from menu where id = '".$del_id."'");
 		}
 		
-		if(isset($_POST["text2"]))
+		$display = $_POST["display"];
+		mysqli_query($link, "update menu set display = 0");
+		foreach($display as $dis_id)
 		{
-			for($i = 0; $i < count($_POST["text2"]); $i++)
-			{
-				mysqli_query($link, "insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', 1, '".$_GET["id"]."')");
-			}
+			mysqli_query($link, "update menu set display = 1 where id = '".$dis_id."'");
 		}
-		header("location:admin.php?redo=menu");
+		
+		for($i = 0; $i < count($_POST["id"]); $i++)
+		{
+			mysqli_query($link, "update menu set text = '".$_POST["text"][$i]."',  href = '".$_POST["href"][$i]."' where id = '".$_POST["id"][$i]."'");
+		}
+		
+		for($i = 0; $i < count($_POST["text2"]); $i++)
+		{
+			if($_POST["del2"][$i] != "on")
+				mysqli_query($link, "insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', 1, '".$_GET["id"]."')");
+		}
+			
+		//header("location:admin.php?redo=menu");
 	}
 	elseif($from == "menuadd")
 	{
