@@ -190,7 +190,7 @@ INSERT INTO `news` (`id`, `text`, `display`) VALUES
 
 CREATE TABLE `title` (
   `id` int(11) NOT NULL,
-  `file` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `display` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
