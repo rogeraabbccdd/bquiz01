@@ -288,7 +288,7 @@
 	   <table width="100%">
     	<tbody>
 		<?php
-			$result = mysqli_query($link, "select * from admin");
+			$result = mysqli_query($link, "select * from admin where type = 1");
 			while($row = mysqli_fetch_array($result))
 			{
 		?>
