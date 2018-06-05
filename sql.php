@@ -47,6 +47,7 @@
 	$num = 0;
 	$gallery = "<div onclick='pp(1)' align='center'><img src='./img/01E01.jpg'></div>";
 	$result = mysqli_query($link, "select * from gallery where display = 1");
+	$gallery_num = mysqli_num_rows($result);
 	while($row = mysqli_fetch_array($result))
 	{
 		$gallery .= "

@@ -122,8 +122,13 @@
 			mysqli_query($link, "delete from gallery where id = '".$del_id."'");
 		}
 		
+		$id = $_POST["id"];
+		foreach($id as $id2)
+		{
+			mysqli_query($link, "update gallery set display = 0 where id = '".$id2."'");
+		}
+		
 		$display = $_POST["display"];
-		mysqli_query($link, "update gallery set display = 0");
 		foreach($display as $dis_id)
 		{
 			mysqli_query($link, "update gallery set display = 1 where id = '".$dis_id."'");

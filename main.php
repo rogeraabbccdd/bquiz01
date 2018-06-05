@@ -130,7 +130,7 @@
 			else $page = $_GET["p"];
 			$start = $page*3-3;
 			$ol = $start +1;
-			$result = mysqli_query($link, "select * from news");
+			$result = mysqli_query($link, "select * from gallery");
 			$total = mysqli_num_rows($result);
 			
 			if($page == 1)
@@ -145,7 +145,7 @@
 			<tr>
 				<td width="68%"><img src="img/<?=$row["file"]?>" width="100" height="68"></td>
 				<td width="7%"><input type="checkbox" name="display[]" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
-				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"></td>
+				<td width="7%"><input type="checkbox" name="delete[]"  value="<?=$row["id"]?>"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 			<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=imageupdate&id=<?=$row["id"]?>&#39;)" value="更換動畫"><input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 						</tr>
 		<?php
