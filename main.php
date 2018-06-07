@@ -21,7 +21,8 @@
 				<td width="23%"><input type="text" name="text[]" value="<?=$row["text"]?>"></td>
 				<td width="7%"><input type="radio" name="display" value="<?=$row["id"]?>" <?php if($row["display"] == 1) echo "checked"; ?>></td>
 				<td width="7%"><input type="checkbox" name="delete[]" value="<?=$row["id"]?>"></td>
-				<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=titleupdate&id=<?=$row["id"]?>&#39;)" value="更換圖片"></td>
+				<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=titleupdate&id=<?=$row["id"]?>&#39;)" value="更換圖片">
+				<input type="hidden" name="id[]" value="<?=$row["id"]?>"></td>
 						</tr>
 		<?php
 			}
