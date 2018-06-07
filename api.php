@@ -17,7 +17,7 @@
 		$ext = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 		$filename .= ".".$ext;
 		copy($_FILES["file"]["tmp_name"], "./img/".$filename);
-		mysqli_query($link, "update titles set file = '".$filename."' where id = '".$_GET["id"]."'");
+		mysqli_query($link, "update title set file = '".$filename."' where id = '".$_GET["id"]."'");
 		header("location:admin.php");
 	}
 	elseif($from == "title")
