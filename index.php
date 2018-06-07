@@ -6,7 +6,7 @@
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>卓越科技大學校園資訊系統</title>
+<title>明志科技大學校園資訊系統</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
 <script src="./assets/jquery-1.9.1.min.js"></script>
 <script src="./assets/js.js"></script>
