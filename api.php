@@ -23,10 +23,15 @@
 	elseif($from == "title")
 	{
 		$delete = $_POST["delete"];
-		
 		foreach($delete as $del_id)
 		{
 			mysqli_query($link, "delete from title where id = '".$del_id."'");
+		}
+		
+		$text = $_POST["id"];
+		for($i = 0; $i < count($_POST["id"]); $i++)
+		{
+			mysqli_query($link, "update title set text = '".$_POST["text"][$i]."' where id = '".$_POST["id"][$i]."'");
 		}
 		
 		$display = $_POST["display"];
