@@ -1,81 +1,55 @@
 <?php
-	/*** 開啟資料庫連接 ***/
-	$link = mysqli_connect("localhost", "root", "", "dbxx");
+	include_once "func.php";
 	
-	/*** 設定UTF8 ***/
+	$link = mysqli_connect("localhost", "root", "", "dbxx");
 	mysqli_query($link, "set names utf8");
 	
-	/*** BANNER ***/
-	$result = mysqli_query($link, "select * from title where display = 1");
-	while($row = mysqli_fetch_array($result))
-	{
-		$title_pic = $row["file"];
-		$title_text = $row["text"];
-	}	
+	$result = mysqli_query($link, sql("title", 1));
+	$row = mysqli_fetch_array($result);
+	$title = $row["file"];
+	$title_text = $row["text"];
 	
-	/*** 廣告輪播 ***/
-	$advert = "";
-	$result = mysqli_query($link, "select * from advert where display = 1");
-	while($row = mysqli_fetch_array($result))
-	{
-		$advert .= $row["text"].", ";
-	}
+	$footer = mysqli_fetch_array(mysqli_query($link, sql("footer", 0)))["text"];
 	
-	/*** 頁尾版權 ***/
-	$result = mysqli_query($link, "select * from footer");
-	while($row = mysqli_fetch_array($result))
-	{
-		$footer = $row["text"];
-	}
-	
-	/*** 圖片輪播 ***/
 	$ani = "";
-	$result = mysqli_query($link, "select * from animate where display = 1");
+	$result = mysqli_query($link, sql("animate", 1));
 	while($row = mysqli_fetch_array($result))
 	{
-		$ani .= "'./img/".$row["file"]."',";
+		$ani .= "'img/".$row["file"]."',";
 	}
 	
-	/*** 訪客人數 ***/
-	$result = mysqli_query($link, "select * from visit");
+	$gallery = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
+	$i = 0;
+	$result = mysqli_query($link, sql("gallery", 1));
+	$gnum = mysqli_num_rows($result);
 	while($row = mysqli_fetch_array($result))
 	{
-		$visit = $row["count"];
+		$gallery .= "<img src='img/".$row["file"]."' class='im' id='ssaa".$i."' width='150' height='103'>";
+		$i++;
 	}
+	$gallery .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
 	
-	/*** 校園映像 ***/
-	$num = 0;
-	$gallery = "<div onclick='pp(1)' align='center'><img src='./img/01E01.jpg'></div>";
-	$result = mysqli_query($link, "select * from gallery where display = 1");
-	$gallery_num = mysqli_num_rows($result);
-	while($row = mysqli_fetch_array($result))
-	{
-		$gallery .= "
-		<img src='./img/".$row["file"]."' style='width:150px; height='103px' align='center' class='im' id='ssaa".$num."' />
-		";
-		
-		$num++;
-	}
-	$gallery .= "<div onclick='pp(2)' align='center'><img src='./img/01E02.jpg'></div>";
+	$visit = mysqli_fetch_array(mysqli_query($link, sql("visit", 0)))["count"];
 	
-	/*** 主選單 ***/
 	$menu = "";
-	// 先取主選單
-	$result = mysqli_query($link, "select * from menu where parent = 0");
+	$result = mysqli_query($link, sql("menu", 1)." and parent = 0");
 	while($row = mysqli_fetch_array($result))
 	{
-		$menu .= "<div class='mainmu' align='center'>
-							<a href='".$row["href"]."' align='center'>".$row["text"]."</a>";
+		$menu .= "<div class='mainmu'><a href='".$row["href"]."'>".$row["text"]."</a>";
 		
-		// 再取次選單
-		$result2 = mysqli_query($link, "select * from menu where parent = ".$row["id"]."");
+		$result2 = mysqli_query($link, sql("menu", 1)." and parent = '".$row["id"]."'");
 		while($row2 = mysqli_fetch_array($result2))
-		{		
-			$menu .= "<div class='mainmu2 mw' align='center' style='display:none'>
-							<a href='".$row2["href"]."' align='center'>".$row2["text"]."</a>
-					</div>";
+		{
+			$menu .= "<div class='mainmu2 mw'><a href='".$row2["href"]."' class='mainmu2 mw'>".$row2["text"]."</a></div>";
 		}
-							
+		
 		$menu .= "</div>";
+	}
+	
+	$mar = "";
+	$result = mysqli_query($link, sql("advert", 1));
+	while($row = mysqli_fetch_array($result))
+	{
+		$mar .= $row["text"]."&emsp;";
 	}
 ?>

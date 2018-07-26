@@ -1,10 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <!-- saved from url=(0048)?do=admin -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-	include "sql.php";
-	include "auth.php";
+	include_once "sql.php";
+	include_once "auth.php";
 ?>
 <title>卓越科技大學校園資訊系統</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
@@ -21,25 +20,25 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title='<?=$title_text?>' href='./index.php'><div class='ti' style='background:url(&#39;img/<?=$title_pic?>&#39;); background-size:cover;'></div><!--標題--></a>
-     	<div id="ms">
+    	<a title="<?=$title_text?>" href="./index.php"><div class="ti" style="background:url(&#39;img/<?=$title?>&#39;); background-size:cover;"></div><!--標題--></a>
+        	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
-													 <?=$menu?>
+													<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : 
-                        	<?=$visit?>                           </span>
+                        	<?=$visit?>                        </span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                   <?=$advert?> </marquee>
+                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;"><?=$mar?>
+                    	                    </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                            		<form method="post" action="?do=check">
+                                            		<form method="post" action="api.php?do=login">
                         	    	<p class="t botli">管理員登入區</p>
                         			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
                         	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
@@ -64,12 +63,12 @@
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;<?=$login_url?>&#39;)"><?=$login_text?></button>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;<?=$btnlink?>&#39;)"><?=$btn?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						<?=$gallery?>
 						                        <script>
-                        	var nowpage=0,num=<?=$gallery_num?>;
+                        	var nowpage=0,num=<?=$gnum?>;
 							function pp(x)
 							{
 								var s,t;

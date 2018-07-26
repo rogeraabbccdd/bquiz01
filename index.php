@@ -1,11 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<?php
-	include "sql.php";
-	include "auth.php";
-?>
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<?php
+	include_once "sql.php";
+	include_once "auth.php";
+?>
 <title>卓越科技大學校園資訊系統</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
 <script src="./assets/jquery-1.9.1.min.js"></script>
@@ -21,12 +20,13 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-	<a title='<?=$title_text?>' href='./index.php'><div class='ti' style='background:url(&#39;img/<?=$title_pic?>&#39;); background-size:cover;'></div><!--標題--></a>
-    	<div id="ms">
+    	<a title="<?=$title_text?>" href="./index.php"><div class="ti" style="background:url(&#39;img/<?=$title?>&#39;); background-size:cover;"></div><!--標題--></a>
+        	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
+                    <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
-													 <?=$menu?>
+													<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : 
@@ -34,8 +34,8 @@
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    <?=$advert?></marquee>
+                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;"><?=$mar?>
+                    	                    </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                                         <script>
@@ -57,29 +57,34 @@
                     </script>
                 	<div style="width:100%; padding:2px; height:290px;">
                     	<div id="mwww" loop="true" style="width:100%; height:100%;">
+						
                         	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
                                                         </div>
                     </div>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
                     		<span class="t botli">最新消息區
+                            								
 							<?php
-								// 如果有多於5筆新消息，顯示More
-								$result = mysqli_query($link, "select * from news where display = 1");
-								$numb = mysqli_num_rows($result);
-								if($numb > 5)
-								{		
-									echo "<a href='news.php' style='float:right'>More</a>";
+								$result = mysqli_query($link, sql("news", 1));
+								$num = mysqli_num_rows($result);
+								if($num > 5)
+								{
+							?>
+							<a href="news.php" style="float:right">More
+                            								</a>
+															<?php
 								}
-							?>	
-                            								</span>
+								?>
+								</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
 							<?php
-								$result = mysqli_query($link, "select * from news where display = 1 limit 5");
+								$result = mysqli_query($link, sql("news", 1)." limit 5");
 								while($row = mysqli_fetch_array($result))
 								{
-									// 切割最新消息文字，只取前20字
-									$part_text = mb_substr($row["text"],0,20 );
-									echo "<li>".$part_text."<span class='all' style='display:none'>".$row["text"]."</span></li>";
+									$part = substr($row["text"], 0, 20);
+									?>
+									<li><?=$part?><span class="all" style="display:none"><?=$row["text"]?>?</span></li>
+									<?php
 								}
 							?>
                             	                            </ul>
@@ -119,13 +124,12 @@
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;<?=$login_url?>&#39;)"><?=$login_text?></button>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;<?=$btnlink?>&#39;)"><?=$btn?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						<?=$gallery?>
-						
 						                        <script>
-                        	var nowpage=0,num=<?=$gallery_num?>;
+                        	var nowpage=0,num=<?=$gnum?>;
 							function pp(x)
 							{
 								var s,t;

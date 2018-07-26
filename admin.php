@@ -1,11 +1,10 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<?php
-	include "sql.php";
-	include "auth.php";
-?>
 <!-- saved from url=(0068)?do=admin&redo=title -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<?php
+	include_once "sql.php";
+	include_once "auth.php";
+?>
 <title>卓越科技大學校園資訊系統</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
 <script src="./assets/jquery-1.9.1.min.js"></script>
@@ -21,8 +20,8 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title='<?=$title_text?>' href='./index.php'><div class='ti' style='background:url(&#39;img/<?=$title_pic?>&#39;); background-size:cover;'></div><!--標題--></a>
-    	<div id="ms">
+    	<a title="<?=$title_text?>" href="./index.php"><div class="ti" style="background:url(&#39;img/<?=$title?>&#39;); background-size:cover;"></div><!--標題--></a>
+        	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
@@ -68,21 +67,21 @@
 							                    </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : 
-                        	<?=$visit?>                       </span>
+                        	<?=$visit?>                     </span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
                 	                     <!--正中央-->
                                                     <table width="100%">
                                 	<tbody><tr>
-                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td><td>
-										<button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;login.php?do=logout&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button>
-										</td>
+                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td><td><button onclick="document.cookie=&#39;user=&#39;;lo('api.php?do=logout')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                                     </tr>
                                 </tbody></table>
                                 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                                   
-       <?php include "main.php";?>
+								<?php
+									if(empty($_GET["redo"]))	include "title.php";
+									else 	include "a".$_GET["redo"].".php";
+								?>
                                     </div>
                                                 </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
