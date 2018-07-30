@@ -1,4 +1,5 @@
 <?php
+	// tbl為資料表，show為判斷是否只查詢顯示
 	function sql($tbl, $show)
 	{
 		$sql = "select * from ".$tbl;
@@ -7,11 +8,15 @@
 		return $sql;
 	}
 	
+	// 重新導向，link為連結
 	function lo($link)
 	{
 		return header("location:".$link);
 	}
 	
+	// 分頁sql
+	// tbl為資料表
+	// p(page)為目前頁數，l(limit)為一頁筆數，s(show)為判斷是否只查詢顯示
 	function page($tbl, $p, $l, $s)
 	{
 		global $link;
@@ -21,6 +26,10 @@
 		return sql($tbl, $s)." limit ".$start.", ".$l;
 	}
 	
+	// 分頁頁碼
+	// tbl為資料表
+	// p(page)為目前頁數，l(limit)為一頁筆數，s(show)為判斷是否只查詢顯示
+	// redo為原頁面的redo變數
 	function pagelink($tbl, $p, $l, $s, $redo)
 	{
 		global $link;
@@ -48,6 +57,10 @@
 		return $r;
 	}
 	
+	// 處理表單
+	// tbl為資料表
+	// data為$_POST
+	// redo為原頁面的redo變數
 	function upd($tbl, $data, $redo)
 	{
 		global $link;
@@ -87,6 +100,11 @@
 		lo("admin.php?redo=".$redo);
 	}
 	
+	// 上傳檔案
+	// tbl為資料表
+	// data為$_POST
+	// redo為原頁面的redo變數
+	// id為上傳檔案資料的id
 	function upfile($tbl, $data, $redo, $id)
 	{
 		global $link;
