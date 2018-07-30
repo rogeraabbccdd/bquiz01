@@ -82,6 +82,7 @@
 				mysqli_query($link, "update ".$tbl." set display = 0  where id = '".$id[$i]."'");
 			}
 		}
+		else mysqli_query($link, "update ".$tbl." set display = 0");
 		
 		if(!empty($redo))
 		{
