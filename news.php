@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 	include_once "sql.php";
-	include_once "auth.php";
 	
 	if(empty($_GET["p"]))	$p = 1;
 	else	$p = $_GET["p"];
