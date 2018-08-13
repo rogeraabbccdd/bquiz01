@@ -1,4 +1,4 @@
-                                    <p class="t cent botli">校園映像資料管理</p>
+                                    <p class="t cent botli">最新消息資料管理</p>
         <form method="post" action="api.php?do=news" enctype="multipart/form-data">
     <table width="100%">
     	<tbody><tr class="yel">
@@ -17,7 +17,6 @@
 							<td><textarea name="text[]"><?=$row["text"]?></textarea></td>
 							<td><input type="checkbox" value="<?=$row["id"]?>" name="dis[]" <?=($row["display"])?"checked":""?>></td>
 							<td><input type="checkbox" value="<?=$row["id"]?>" name="del[]"></td>
-							<td><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=upimg&id=<?=$row["id"]?>&#39;)" value="更新圖片"></td>
 							</tr>
 							<?php
 						}
