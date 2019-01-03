@@ -4,5 +4,5 @@
 ## 成品參考
 http://bquiz.kento520.tw/finish/1/index.php
 
-## 解析
-http://bquiz.kento520.tw/solve/1/index.html
+## 解析 (製作中)
+https://rogeraabbccdd.github.io/bquiz01/
