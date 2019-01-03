@@ -15,7 +15,7 @@ description: 在考前安裝XAMPP時利用時間整理各題素材
 
 建立img資料夾，把圖片都放進去。
 
-![&#x6574;&#x7406;&#x5B8C;&#x5F8C;&#x7684;&#x8CC7;&#x6599;&#x593E;](../.gitbook/assets/explorer_2018-09-18_13-30-07.png)
+![&#x6574;&#x7406;&#x5B8C;&#x5F8C;&#x7684;&#x8CC7;&#x6599;&#x593E;](../images/explorer_2018-09-18_13-30-07.png)
 
 
 

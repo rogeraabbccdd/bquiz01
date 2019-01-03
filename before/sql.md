@@ -13,9 +13,9 @@ description: 安裝好XAMPP後，進行SQL資料庫"測試"，將每題的資料
 id為AUTO\_INCREMENT的流水號，acc為帳號，pass為密碼  
 在建立資料表時順便新增預設管理員，帳號admin，密碼1234
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/sqladmin.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/sqladmin.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/chrome_2018-09-18_15-58-49.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/chrome_2018-09-18_15-58-49.png)
 
 ## 跑馬燈廣告
 
@@ -23,9 +23,9 @@ id為AUTO\_INCREMENT的流水號，acc為帳號，pass為密碼
 id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示  
 在建立資料表時順便新增01A02.txt裡的5個預設跑馬燈文字
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-2.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-2.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-2-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-2-1.png)
 
 ## 動畫輪播
 
@@ -33,9 +33,9 @@ id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示
 id為AUTO\_INCREMENT的流水號，file為檔名，display為是否顯示  
 在建立資料表時順便新增六個圖片輪播檔案
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-3.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-3.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-3-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-3-1.png)
 
 ## 校園映像
 
@@ -43,9 +43,9 @@ id為AUTO\_INCREMENT的流水號，file為檔名，display為是否顯示
 id為AUTO\_INCREMENT的流水號，file為檔名，display為是否顯示  
 在建立資料表時順便新增01D01.jpg~01D10.jpg 
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-5.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-5.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-5-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-5-1.png)
 
 ## 最新消息
 
@@ -53,9 +53,9 @@ id為AUTO\_INCREMENT的流水號，file為檔名，display為是否顯示
 id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示  
 在建立資料表時順便新增01A02.txt裡的最新消息
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-7.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-7.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-7-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-7-1.png)
 
 ## 標題圖片
 
@@ -63,9 +63,9 @@ id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示
 id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示，**display只能有一個為1**   
 在建立資料表時順便新增01B01.jpg~01B04.jpg
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-8.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-8.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-8-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-8-1.png)
 
 ## 選單
 
@@ -73,9 +73,9 @@ id為AUTO\_INCREMENT的流水號，text為文字，display為是否顯示，**di
 id為AUTO\_INCREMENT的流水號，text為選單文字，href為選單超連結，display為是否顯示   
 parent為上層選單id，0為最上層選單 
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-6.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-6.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-6-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-6-1.png)
 
 ## 訪客人數
 
@@ -83,9 +83,9 @@ parent為上層選單id，0為最上層選單
 count為訪客人數  
 在建立資料表時順便新增一筆為0的資料 
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-9.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-9.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-9-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-9-1.png)
 
 ## 頁尾版權
 
@@ -93,7 +93,7 @@ count為訪客人數
 text為版權文字  
 在建立資料表時順便新增一筆資料
 
-![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../.gitbook/assets/2-4.png)
+![&#x8CC7;&#x6599;&#x8868;&#x7D50;&#x69CB;](../images/2-4.png)
 
-![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../.gitbook/assets/2-4-1.png)
+![&#x8CC7;&#x6599;&#x8868;&#x5167;&#x5BB9;](../images/2-4-1.png)
 
