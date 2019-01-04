@@ -24,7 +24,7 @@ session_start();
 ## 寫入function
 
 由於考試有四個小時的時間限制，將一些常用語法寫成 function 來縮短字數，節省打字時間  
-第一題後台資料處理大同小異，因此也可以寫成function，避免修改程式碼漏改
+第一題後台資料處理大同小異，因此也可以寫成function，避免複製貼上修時漏改
 
 ```php
 // 節省 mysqli_query 字數
@@ -138,7 +138,7 @@ if(empty($_SESSION["v"]))
 	$_SESSION["v"] = "123";
 	
 	// 資料庫更新人數
-	mq("update visit set count = count + 1");
+	mq("update total set count = count + 1");
 }
 
 // 管理登入按鈕

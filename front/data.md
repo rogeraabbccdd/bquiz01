@@ -46,7 +46,7 @@ while(fa2($row, $result))
 在 sql.php 輸入共用程式碼
 
 ```php
-$footer = fa(mq(sql("footer", 0)))[0];
+$bottom = fa(mq(sql("bottom", 0)))[0];
 ```
 
 ### 插入各頁面
@@ -55,7 +55,7 @@ $footer = fa(mq(sql("footer", 0)))[0];
 
 ```php
 <div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-		<span class="t" style="line-height:123px;"><?=$footer?></span>
+		<span class="t" style="line-height:123px;"><?=$bottom?></span>
 </div>
 ```
 
@@ -69,15 +69,15 @@ $footer = fa(mq(sql("footer", 0)))[0];
 這個變數必須要在進站判斷的 `$_SESSION["v"]` 後面，否則人數會少1，重新整理後才正常
 
 ```php
-$visit = fa(mq(sql("visit", 0)))[0];
+$total = fa(mq(sql("total", 0)))[0];
 ```
 
 ### 插入各頁面
 
-找到進佔總人數，插入進站人數變數
+找到進站總人數，插入進站人數變數
 
 ```php
-<span class="t">進站總人數 : <?=$visit?>  </span>
+<span class="t">進站總人數 : <?=$total?>  </span>
 ```
 
 ## 校園映象
@@ -91,23 +91,23 @@ $visit = fa(mq(sql("visit", 0)))[0];
 ```php
 // 把資料全部串在一個變數裡，插入時只要插入一個變數就好
 // 往上的按鈕, pp為素材提供的JS
-$gallery = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
+$image = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
 
-$result = mq(sql("gallery", 1));
+$result = mq(sql("image", 1));
 
 // 圖片數
-$gnum = nr($result);
+$inum = nr($result);
 
 $i = 0;
 while(fa2($row, $result))
 {
 	// 校園映象區的JS必須要class為im，id為ssaa開頭才有效
-	$gallery .= "<img src='img/".$row["file"]."' class='im' id='ssaa".$i."' width='150' height='103'>";
+	$image .= "<img src='img/".$row["file"]."' class='im' id='ssaa".$i."' width='150' height='103'>";
 	$i++;
 }
 
 // 往下的按鈕, pp為素材提供的JS
-$gallery .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
+$image .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
 
 ```
 
@@ -118,10 +118,10 @@ $gallery .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
 
 ```php
 <span class="t botli">校園映象區</span>
-	<?=$gallery?>
+	<?=$image?>
 <script>
 	// 在 num 插入總圖片數 $gnum
-	var nowpage=0,num=<?=$gnum?>;
+	var nowpage=0,num=<?=$inum?>;
 	function pp(x)
 	{
 		var s,t;
@@ -200,21 +200,21 @@ while(fa2($row, $result))
 
 ```php
 // 把資料全部串在一個變數裡，插入時只要插入一個變數就好
-$mar = "";
-$result = mq(sql("advert", 1));
+$ad = "";
+$result = mq(sql("ad", 1));
 while(fa2($row, $result))
 {
-	$mar .= $row["text"]."&emsp;";
+	$ad .= $row["text"]."&emsp;";
 }
 ```
 
 ### 插入各頁面
 
-找到 marquee 標籤，插入跑馬燈變數
+找到 marquee，插入跑馬燈變數
 
 ```php
 <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-    <?=$mar?>
+    <?=$ad?>
 </marquee>
 ```
 

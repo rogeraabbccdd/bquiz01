@@ -10,14 +10,15 @@ description: 編輯atitle.php
 
 把 form 標籤的`target="back"` 刪除，然後把action改為 api.php
 
-```markup
+```html
 <form method="post" action="api.php?do=tii">
 ```
 
 ### 顯示後台資料
 
-在表格第一列標題後面
-
+表格第一列標題列後面放入顯示資料的程式碼
+版型預設按鈕會以彈出視窗顯示 view.php，以 do 判斷要顯示的內容  
+我的do命名規則是新增以n(new)開頭，修改以u開頭(update)，後面接admin.php的redo，不過因為標題管理沒有redo，所以直接寫title
 ```php
 <?php
 	$result = mq(sql("title", 0));
@@ -46,10 +47,13 @@ description: 編輯atitle.php
 	}
 ?>
 ```
+完成後修改下方新增按鈕的連結  
+
+```html
+<input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=ntitle&#39;)" value="新增網站標題圖片">
+```
 
 ## 編輯彈出視窗
-
-版型預設彈出視窗顯示 view.php，以 do 判斷要顯示的內容  
 標題管理有title和uptitle兩個要顯示
 
 開新檔view.php，以 `$_GET["do"]` 判斷要做什麼動作  
@@ -85,13 +89,17 @@ description: 編輯atitle.php
 ?>
 ```
 
-## 處理表單資料
+## 寫處理表單資料的function
 
-在 sql.php 加入處理表單的function
-
+在 sql.php 加入處理表單的function  
+因為這題的檔案上傳都是單檔上傳，且有些地方只要處理檔案，不用處理表單，所以我分成兩個function  
+要注意的地方是foreach沒有收到值的話會跳出警告訊息，不過處理表單後會瞬間跳回管理頁所以看不到，這是為了應付考試才沒有寫判斷
 ```php
-/* 處理表單資料 */
-function upd($post, $tbl, $insert, $redo)
+// 處理表單資料
+// $post 為 $_POST
+// $tbl為資料表
+// $insert為是否要新增一筆資料
+function upd($post, $tbl, $insert)
 {
 	global $link; 
 	// 如果有要INSERT，先新增一筆只有ID的資料
@@ -106,33 +114,40 @@ function upd($post, $tbl, $insert, $redo)
 	// 先迴POST的NAME
 	foreach($post as $name => $v)
 	{
-		// 有些資料不是陣列，例如title的display、新增文字廣告等
+		// 有些資料不是陣列
 		if(!is_array($v))
 		{
 			switch($name){
-				// 新增文字廣告
-				case "text":
-					mq("update ".$tbl." set ".$name." = ".$v." where id = ".$newid);
-					break;
-				
 				// title的display
 				case "display":
 					mq("update ".$tbl." set display = 1 where id = ".$v);
 					break;
+
+				// footer、進站人數
+				case "bottom":
+				case "count":
+					mq("update ".$tbl." set ".$name." = '".$v."'");
+					break;
 				
-				// 其他，footer、進站人數等
+				// 新增文字廣告、新增最新消息、新增管理員、新增主選單
 				default:
-					mq("update ".$tbl." set ".$name." = ".$v);
+				mq("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
 					break;
 			}
 		}
 		else
 		{
-			// 再迴每個NAME的陣列
+			// 再迴每個NAME的陣列，陣列索引值為資料ID
 			foreach($v as $id => $vv)
 			{
 				switch($name)
 				{
+					// 有傳ID的東西設為不顯示
+					case "id":
+						mq("update ".$tbl." set display = 0 where id = ".$vv);
+						break;
+
+					// 再把要顯示的設為顯示
 					case "display":
 						if($insert) $vv = $newid;
 						mq("update ".$tbl." set display = 1 where id = ".$vv);
@@ -142,14 +157,11 @@ function upd($post, $tbl, $insert, $redo)
 						mq("delete from ".$tbl." where id = ".$vv);
 						break;
 					
-					case "id":
-						mq("update ".$tbl." set display = 0 where id = ".$vv);
-						break;
-					
-					case "text":
+					// 文字、管理者帳號及密碼、選單文字及連結
+					default:
 						if($insert) $vv = $newid;
-						mq("update ".$tbl." set text = '".$vv."' where id = ".$id);
-						break;
+						mq("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
+						break;					
 				}
 			}
 		}
@@ -159,18 +171,41 @@ function upd($post, $tbl, $insert, $redo)
 	return $newid;
 }
 
-/* 處理檔案上傳 */
-function upfile($data, $tbl, $id)
+// 處理上傳檔案
+function upfile($file, $tbl, $id)
 {
 	// 以目前的時間戳記當檔案名稱
 	$date = strtotime("now");
+
 	// 獲取上傳檔案的副檔名
-	$ext = pathinfo($data["file"]["name"], PATHINFO_EXTENSION);
+	$ext = pathinfo($file["file"]["name"], PATHINFO_EXTENSION);
+
+	// 組合成完整的檔名
 	$name = $date.".".$ext;
 	
-	copy($data["file"]["tmp_name"], "img/".$name);
+	copy($file["file"]["tmp_name"], "img/".$name);
 	
 	mq("update ".$tbl." set file = '".$name."' where id = '".$id."'");
 }
 ```
 
+## 寫入API
+在 api.php 加入處理表單的程式碼  
+直接套入剛剛寫好的function
+```php
+case "title":
+	upd($_POST, "title", 0);
+	lo("admin.php");
+	break;
+
+case "uptitle":
+	upfile($_FILES, "title", $_GET["id"], "");
+	lo("admin.php");
+	break;
+
+case "ntitle":
+	$nid = upd($_POST, "title", 1);
+	upfile($_FILES, "title", $nid);
+	lo("admin.php");
+	break;
+```
