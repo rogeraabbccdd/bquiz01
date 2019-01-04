@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
                 
             
                 
@@ -287,40 +287,40 @@
                                 
                                 <h1 id="&#x767B;&#x5165;&#x9801;">&#x767B;&#x5165;&#x9801;</h1>
 <h2 id="&#x7DE8;&#x8F2F;&#x8868;&#x55AE;">&#x7DE8;&#x8F2F;&#x8868;&#x55AE;</h2>
-<p>&#x627E;&#x5230; <code>&lt;!-- &#x6B63;&#x4E2D;&#x592E; --&gt;</code> &#x5F8C;&#x9762;&#x7684; form &#x6A19;&#x7C64; &#xFF0C;&#x628A; <code>target=&quot;back&quot;</code> &#x522A;&#x6389;<br>&#x628A; action &#x6539;&#x70BA; <code>action=&quot;api.php?do=check&quot;</code></p>
+<p>&#x627E;&#x5230; <code><span class="token comment">&lt;!-- &#x6B63;&#x4E2D;&#x592E; --&gt;</span></code> &#x5F8C;&#x9762;&#x7684; form &#x6A19;&#x7C64; &#xFF0C;&#x628A; <code>target=&quot;back&quot;</code> &#x522A;&#x6389;<br>&#x628A; action &#x6539;&#x70BA; <code>action=&quot;api.php?do=check&quot;</code></p>
 <h2 id="&#x5EFA;&#x7ACB;&#x8868;&#x55AE;&#x8655;&#x7406;&#x6A94;">&#x5EFA;&#x7ACB;&#x8868;&#x55AE;&#x8655;&#x7406;&#x6A94;</h2>
 <p>&#x5EFA;&#x7ACB;&#x8868;&#x55AE;&#x8655;&#x7406;&#x6A94;api.php&#xFF0C;&#x4EE5; <code>$_GET[&quot;do&quot;]</code> &#x5224;&#x65B7;&#x8981;&#x505A;&#x4EC0;&#x9EBC;&#x52D5;&#x4F5C;<br>&#x56E0;&#x70BA;&#x9019;&#x984C;&#x5F8C;&#x53F0;&#x91CF;&#x5F88;&#x5927;&#xFF0C;&#x5EFA;&#x8B70;&#x7528; <code>switch</code> &#x7BC0;&#x7701;&#x5B57;&#x6578;</p>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
-    <span class="hljs-comment">// &#x5F15;&#x7528;&#x5171;&#x7528;&#x6A94;</span>
-    <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;sql.php&quot;</span>;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token comment">// &#x5F15;&#x7528;&#x5171;&#x7528;&#x6A94;</span>
+    <span class="token keyword">include</span> <span class="token double-quoted-string string">&quot;sql.php&quot;</span><span class="token punctuation">;</span>
 
-    <span class="hljs-comment">// &#x4EE5; $_GET[&quot;do&quot;] &#x5224;&#x65B7;&#x8981;&#x505A;&#x4EC0;&#x9EBC;&#x52D5;&#x4F5C;</span>
-    <span class="hljs-keyword">switch</span>($_GET[<span class="hljs-string">&quot;do&quot;</span>])
-    {
-        <span class="hljs-comment">// &#x8655;&#x7406;&#x8868;&#x55AE;&#x7684;&#x7A0B;&#x5F0F;&#x78BC; </span>
-    }
-<span class="hljs-meta">?&gt;</span>
+    <span class="token comment">// &#x4EE5; $_GET[&quot;do&quot;] &#x5224;&#x65B7;&#x8981;&#x505A;&#x4EC0;&#x9EBC;&#x52D5;&#x4F5C;</span>
+    <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;do&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x8655;&#x7406;&#x8868;&#x55AE;&#x7684;&#x7A0B;&#x5F0F;&#x78BC; </span>
+    <span class="token punctuation">}</span>
+<span class="token delimiter important">?&gt;</span>
 </code></pre>
 <h2 id="&#x8655;&#x7406;&#x767B;&#x5165;&#x8868;&#x55AE;&#x8CC7;&#x6599;">&#x8655;&#x7406;&#x767B;&#x5165;&#x8868;&#x55AE;&#x8CC7;&#x6599;</h2>
 <p>&#x5728; api.php &#x65B0;&#x589E;&#x8655;&#x7406;&#x767B;&#x5165;&#x8868;&#x55AE;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;</p>
-<pre><code class="lang-php"><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;check&quot;</span>:
-    <span class="hljs-comment">// &#x67E5;&#x8A62;&#x5E33;&#x865F;&#x5BC6;&#x78BC;</span>
-    $result = mq(sql(<span class="hljs-string">&quot;admin&quot;</span>, <span class="hljs-number">0</span>).<span class="hljs-string">&quot; where acc = &apos;&quot;</span>.$_POST[<span class="hljs-string">&quot;acc&quot;</span>].<span class="hljs-string">&quot;&apos; and pass = &apos;&quot;</span>.$_POST[<span class="hljs-string">&quot;ps&quot;</span>].<span class="hljs-string">&quot;&apos;&quot;</span>);
+<pre class="language-"><code class="lang-php"><span class="token keyword">case</span> <span class="token double-quoted-string string">&quot;check&quot;</span><span class="token punctuation">:</span>
+    <span class="token comment">// &#x67E5;&#x8A62;&#x5E33;&#x865F;&#x5BC6;&#x78BC;</span>
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token function">sql</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;admin&quot;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot; where acc = &apos;&quot;</span><span class="token punctuation">.</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;acc&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot;&apos; and pass = &apos;&quot;</span><span class="token punctuation">.</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;ps&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot;&apos;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-comment">// &#x67E5;&#x8A62;&#x8CC7;&#x6599;&#x7B46;&#x6578;</span>
-    $num = nr($result);
+    <span class="token comment">// &#x67E5;&#x8A62;&#x8CC7;&#x6599;&#x7B46;&#x6578;</span>
+    <span class="token variable">$num</span> <span class="token operator">=</span> <span class="token function">nr</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-comment">// &#x6709;&#x8CC7;&#x6599;&#xFF0C;&#x767B;&#x5165;</span>
-    <span class="hljs-keyword">if</span>($num &gt; <span class="hljs-number">0</span>)
-    {
-        $row = fa($result);
-        $_SESSION[<span class="hljs-string">&quot;a&quot;</span>] = $row[<span class="hljs-string">&quot;acc&quot;</span>];
-        lo(<span class="hljs-string">&quot;admin.php&quot;</span>);
-    }
+    <span class="token operator">/</span><span class="token operator">/</span> &#x6709;&#x8CC7;&#x6599;&#xFF0C;&#x767B;&#x5165;
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$num</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">fa</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;a&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$row</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;acc&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">lo</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;admin.php&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-comment">// &#x6C92;&#x8CC7;&#x6599;&#xFF0C;&#x986F;&#x793A;&#x8A0A;&#x606F;&#x5F8C;&#x8DF3;&#x56DE;&#x4E0A;&#x4E00;&#x9801;</span>
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;alert(&apos;&#x5E33;&#x865F;&#x6216;&#x5BC6;&#x78BC;&#x8F38;&#x5165;&#x932F;&#x8AA4;&apos;); window.history.back();&lt;/script&gt;&quot;</span>;
-    <span class="hljs-keyword">break</span>;
+    <span class="token operator">/</span><span class="token operator">/</span> &#x6C92;&#x8CC7;&#x6599;&#xFF0C;&#x986F;&#x793A;&#x8A0A;&#x606F;&#x5F8C;&#x8DF3;&#x56DE;&#x4E0A;&#x4E00;&#x9801;
+    <span class="token keyword">else</span> <span class="token keyword">echo</span> <span class="token double-quoted-string string">&quot;&lt;script&gt;alert(&apos;&#x5E33;&#x865F;&#x6216;&#x5BC6;&#x78BC;&#x8F38;&#x5165;&#x932F;&#x8AA4;&apos;); window.history.back();&lt;/script&gt;&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -365,7 +365,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"編輯登入頁login.php","title":"登入頁","level":"3.4","depth":1,"next":{"title":"後台頁","level":"4.1","depth":1,"path":"back/admin.md","ref":"back/admin.md","articles":[]},"previous":{"title":"更多最新消息頁","level":"3.3","depth":1,"path":"front/news.md","ref":"front/news.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"front/login.md","mtime":"2019-01-03T07:07:12.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-03T08:35:55.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"編輯登入頁login.php","title":"登入頁","level":"3.4","depth":1,"next":{"title":"後台頁","level":"4.1","depth":1,"path":"back/admin.md","ref":"back/admin.md","articles":[]},"previous":{"title":"更多最新消息頁","level":"3.3","depth":1,"path":"front/news.md","ref":"front/news.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"front/login.md","mtime":"2019-01-03T07:07:12.889Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T07:27:15.641Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

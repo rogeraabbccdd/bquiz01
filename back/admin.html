@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
                 
             
                 
@@ -289,33 +289,33 @@
 <h2 id="&#x7BA1;&#x7406;&#x767B;&#x51FA;">&#x7BA1;&#x7406;&#x767B;&#x51FA;</h2>
 <h3 id="&#x4FEE;&#x6539;&#x9023;&#x7D50;">&#x4FEE;&#x6539;&#x9023;&#x7D50;</h3>
 <p>&#x627E;&#x5230;&#x7BA1;&#x7406;&#x767B;&#x51FA;&#x9215;&#xFF0C;&#x628A; onclick &#x88E1;&#x9762;&#x7684;<code>location.replace</code>&#x8DEF;&#x5F91;&#x6539;&#x70BA; api.php&#xFF0C;&#x8B93; api.php &#x505A;&#x767B;&#x51FA;&#x8655;&#x7406;</p>
-<pre><code class="lang-php">onclick=<span class="hljs-string">&quot;document.cookie=&amp;#39;user=&amp;#39;;location.replace(&amp;#39;api.php?do=out&amp;#39;)&quot;</span> style=<span class="hljs-string">&quot;width:99%; margin-right:2px; height:50px;&quot;</span>
+<pre class="language-"><code class="lang-php">onclick<span class="token operator">=</span><span class="token double-quoted-string string">&quot;document.cookie=&amp;#39;user=&amp;#39;;location.replace(&amp;#39;api.php?do=out&amp;#39;)&quot;</span> style<span class="token operator">=</span><span class="token double-quoted-string string">&quot;width:99%; margin-right:2px; height:50px;&quot;</span>
 </code></pre>
 <h3 id="&#x8655;&#x7406;&#x767B;&#x51FA;">&#x8655;&#x7406;&#x767B;&#x51FA;</h3>
 <p>&#x7DE8;&#x8F2F;api.php</p>
-<pre><code class="lang-php"><span class="hljs-comment">// &#x767B;&#x51FA;</span>
-<span class="hljs-keyword">case</span> <span class="hljs-string">&quot;out&quot;</span>:
-    <span class="hljs-comment">// &#x53EA;&#x6709; unset &#x7BA1;&#x7406;&#x54E1;&#x7684; session</span>
-    <span class="hljs-comment">// &#x907F;&#x514D;&#x9032;&#x7AD9;&#x4EBA;&#x6578;&#x56E0;&#x70BA; session_destroy &#x6216; session_unset &#x800C; +1</span>
-    <span class="hljs-keyword">unset</span>($_SESSION[<span class="hljs-string">&quot;a&quot;</span>]);
-    <span class="hljs-comment">// &#x5C0E;&#x56DE;&#x767B;&#x5165;&#x9801;</span>
-    lo(<span class="hljs-string">&quot;login.php&quot;</span>);
-    <span class="hljs-keyword">break</span>;
+<pre class="language-"><code class="lang-php"><span class="token comment">// &#x767B;&#x51FA;</span>
+<span class="token keyword">case</span> <span class="token double-quoted-string string">&quot;out&quot;</span><span class="token punctuation">:</span>
+    <span class="token comment">// &#x53EA;&#x6709; unset &#x7BA1;&#x7406;&#x54E1;&#x7684; session</span>
+    <span class="token comment">// &#x907F;&#x514D;&#x9032;&#x7AD9;&#x4EBA;&#x6578;&#x56E0;&#x70BA; session_destroy &#x6216; session_unset &#x800C; +1</span>
+    <span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;a&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// &#x5C0E;&#x56DE;&#x767B;&#x5165;&#x9801;</span>
+    <span class="token function">lo</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;login.php&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="&#x5167;&#x5BB9;&#x5340;">&#x5167;&#x5BB9;&#x5340;</h2>
 <p>&#x9019;&#x9801;&#x7684;&#x9078;&#x55AE;&#x9023;&#x7D50;&#x4EE5; <code>$_GET[&quot;redo&quot;]</code> &#x5224;&#x65B7;&#x5728;&#x5167;&#x5BB9;&#x5340;&#x986F;&#x793A;&#x7684;&#x7BA1;&#x7406;&#x9805;&#x76EE;</p>
-<p>&#x627E;&#x5230;<code>&lt;p class=&quot;t cent botli&quot;&gt;&#x7DB2;&#x7AD9;&#x6A19;&#x984C;&#x7BA1;&#x7406;&lt;/p&gt;</code> &#xFF0C;&#x628A;&#x5305;&#x4F4F;&#x5B83;&#x7684;div&#x88E1;&#x9762;&#x7684;&#x5167;&#x5BB9;&#x5168;&#x90E8;&#x526A;&#x4E0B;&#xFF0C;&#x53E6;&#x958B;&#x65B0;&#x6A94; <code>atitle.php</code> &#x5F8C;&#x8CBC;&#x4E0A;&#xFF0C;&#x7136;&#x5F8C;&#x5728;&#x5F8C;&#x9762;&#x52A0;&#x4E0A; include &#x7A0B;&#x5F0F;&#x78BC;</p>
+<p>&#x627E;&#x5230;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>t cent botli<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x7DB2;&#x7AD9;&#x6A19;&#x984C;&#x7BA1;&#x7406;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code> &#xFF0C;&#x628A;&#x5305;&#x4F4F;&#x5B83;&#x7684;div&#x88E1;&#x9762;&#x7684;&#x5167;&#x5BB9;&#x5168;&#x90E8;&#x526A;&#x4E0B;&#xFF0C;&#x53E6;&#x958B;&#x65B0;&#x6A94; <code>atitle.php</code> &#x5F8C;&#x8CBC;&#x4E0A;&#xFF0C;&#x7136;&#x5F8C;&#x5728;&#x5F8C;&#x9762;&#x52A0;&#x4E0A; include &#x7A0B;&#x5F0F;&#x78BC;</p>
 <p>&#x4FEE;&#x6539;&#x5B8C;&#x6210;&#x5F8C;&#x7684;&#x6574;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x5982;&#x4E0B;</p>
-<pre><code class="lang-php">&lt;div style=<span class="hljs-string">&quot;width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;&quot;</span>&gt;
-<span class="hljs-meta">&lt;?php</span>
-    <span class="hljs-comment">// &#x9078;&#x55AE;&#x9023;&#x7D50;&#x4EE5; redo &#x5224;&#x65B7;&#x8981;&#x5728;&#x7DB2;&#x9801;&#x5167;&#x5BB9;&#x5340;&#x986F;&#x793A;&#x54EA;&#x500B;&#x7BA1;&#x7406;&#x9805;&#x76EE;</span>
-    <span class="hljs-comment">// &#x9810;&#x8A2D;&#x70BA; &#x6A19;&#x984C;&#x7BA1;&#x7406;</span>
-    <span class="hljs-comment">// &#x76F4;&#x63A5; include &#x6A94;&#x540D;&#x70BA;redo&#x503C;&#x7684;php &#x5C31;&#x597D;</span>
-    <span class="hljs-comment">// &#x4E0D;&#x904E;&#x8981;&#x5728;&#x524D;&#x9762;&#x52A0;&#x500B; a &#xFF0C;&#x907F;&#x514D;&#x548C;&#x524D;&#x53F0;&#x9801;&#x9762;&#x885D;&#x7A81;&#xFF0C;&#x4F8B;&#x5982;&#x66F4;&#x591A;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x9801;</span>
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>($_GET[<span class="hljs-string">&quot;redo&quot;</span>]))    <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;atitle.php&quot;</span>;
-    <span class="hljs-keyword">else</span>     <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;a&quot;</span>.$_GET[<span class="hljs-string">&quot;redo&quot;</span>].<span class="hljs-string">&quot;.php&quot;</span>;    
-<span class="hljs-meta">?&gt;</span>
-&lt;/div&gt;
+<pre class="language-"><code class="lang-php"><span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token double-quoted-string string">&quot;width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;&quot;</span><span class="token operator">&gt;</span>
+<span class="token delimiter important">&lt;?php</span>
+    <span class="token comment">// &#x9078;&#x55AE;&#x9023;&#x7D50;&#x4EE5; redo &#x5224;&#x65B7;&#x8981;&#x5728;&#x7DB2;&#x9801;&#x5167;&#x5BB9;&#x5340;&#x986F;&#x793A;&#x54EA;&#x500B;&#x7BA1;&#x7406;&#x9805;&#x76EE;</span>
+    <span class="token comment">// &#x9810;&#x8A2D;&#x70BA; &#x6A19;&#x984C;&#x7BA1;&#x7406;</span>
+    <span class="token comment">// &#x76F4;&#x63A5; include &#x6A94;&#x540D;&#x70BA;redo&#x503C;&#x7684;php &#x5C31;&#x597D;</span>
+    <span class="token comment">// &#x4E0D;&#x904E;&#x8981;&#x5728;&#x524D;&#x9762;&#x52A0;&#x500B; a &#xFF0C;&#x907F;&#x514D;&#x548C;&#x524D;&#x53F0;&#x9801;&#x9762;&#x885D;&#x7A81;&#xFF0C;&#x4F8B;&#x5982;&#x66F4;&#x591A;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x9801;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;redo&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token keyword">include</span> <span class="token double-quoted-string string">&quot;atitle.php&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>     <span class="token keyword">include</span> <span class="token double-quoted-string string">&quot;a&quot;</span><span class="token punctuation">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;redo&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot;.php&quot;</span><span class="token punctuation">;</span>    
+<span class="token delimiter important">?&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
 </code></pre>
 
                                 
@@ -360,7 +360,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"編輯後台頁admin.php","title":"後台頁","level":"4.1","depth":1,"next":{"title":"標題管理","level":"4.2","depth":1,"path":"back/title.md","ref":"back/title.md","articles":[]},"previous":{"title":"登入頁","level":"3.4","depth":1,"path":"front/login.md","ref":"front/login.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"back/admin.md","mtime":"2019-01-03T07:09:43.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-03T08:35:55.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"編輯後台頁admin.php","title":"後台頁","level":"4.1","depth":1,"next":{"title":"標題管理","level":"4.2","depth":1,"path":"back/title.md","ref":"back/title.md","articles":[]},"previous":{"title":"登入頁","level":"3.4","depth":1,"path":"front/login.md","ref":"front/login.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"back/admin.md","mtime":"2019-01-03T07:09:43.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T07:27:15.641Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
