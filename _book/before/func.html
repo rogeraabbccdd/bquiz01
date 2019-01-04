@@ -1,0 +1,510 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>編寫共用程式碼 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="SQL資料庫"測試"完成後，開始"測試"PHP，寫好共用function以及資料庫連接、session等程式碼">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../front/data.html" />
+    
+    
+    <link rel="prev" href="sql.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    卓越科技大學校園資訊系統
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">軟體安裝測試</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="file.html">
+            
+                <a href="file.html">
+            
+                    
+                    整理檔案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="sql.html">
+            
+                <a href="sql.html">
+            
+                    
+                    建立資料庫
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="func.html">
+            
+                <a href="func.html">
+            
+                    
+                    編寫共用程式碼
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">前台</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../front/data.html">
+            
+                <a href="../front/data.html">
+            
+                    
+                    編輯共用資料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../front/">
+            
+                <a href="../front/">
+            
+                    
+                    首頁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../front/news.html">
+            
+                <a href="../front/news.html">
+            
+                    
+                    更多最新消息頁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../front/login.html">
+            
+                <a href="../front/login.html">
+            
+                    
+                    登入頁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">後台</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../back/admin.html">
+            
+                <a href="../back/admin.html">
+            
+                    
+                    後台頁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../back/title.html">
+            
+                <a href="../back/title.html">
+            
+                    
+                    標題管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >編寫共用程式碼</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7DE8;&#x5BEB;&#x5171;&#x7528;&#x7A0B;&#x5F0F;&#x78BC;">&#x7DE8;&#x5BEB;&#x5171;&#x7528;&#x7A0B;&#x5F0F;&#x78BC;</h1>
+<h2 id="&#x5EFA;&#x7ACB;&#x6A94;&#x6848;sqlphp">&#x5EFA;&#x7ACB;&#x6A94;&#x6848;sql.php</h2>
+<p>&#x5EFA;&#x7ACB;&#x6A94;&#x6848;sql.php&#xFF0C;&#x653E;&#x5165;&#x5171;&#x7528;&#x7A0B;&#x5F0F;&#x78BC;</p>
+<h2 id="&#x5BEB;&#x5165;&#x5FC5;&#x8981;&#x7A0B;&#x5F0F;&#x78BC;">&#x5BEB;&#x5165;&#x5FC5;&#x8981;&#x7A0B;&#x5F0F;&#x78BC;</h2>
+<pre class="language-"><code class="lang-php"><span class="token comment">/*** &#x958B;&#x555F;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x63A5; ***/</span>
+<span class="token variable">$link</span> <span class="token operator">=</span> <span class="token function">mysqli_connect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;localhost&quot;</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">&quot;root&quot;</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">&quot;dbxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*** &#x8A2D;&#x5B9A;UTF8 ***/</span>
+<span class="token function">mysqli_query</span><span class="token punctuation">(</span><span class="token variable">$link</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">&quot;set names utf8&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* &#x958B;&#x59CB;session */</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="&#x5BEB;&#x5165;function">&#x5BEB;&#x5165;function</h2>
+<p>&#x7531;&#x65BC;&#x8003;&#x8A66;&#x6709;&#x56DB;&#x500B;&#x5C0F;&#x6642;&#x7684;&#x6642;&#x9593;&#x9650;&#x5236;&#xFF0C;&#x5C07;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x8A9E;&#x6CD5;&#x5BEB;&#x6210; function &#x4F86;&#x7E2E;&#x77ED;&#x5B57;&#x6578;&#xFF0C;&#x7BC0;&#x7701;&#x6253;&#x5B57;&#x6642;&#x9593;<br>&#x7B2C;&#x4E00;&#x984C;&#x5F8C;&#x53F0;&#x8CC7;&#x6599;&#x8655;&#x7406;&#x5927;&#x540C;&#x5C0F;&#x7570;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x53EF;&#x4EE5;&#x5BEB;&#x6210;function&#xFF0C;&#x907F;&#x514D;&#x4FEE;&#x6539;&#x7A0B;&#x5F0F;&#x78BC;&#x6F0F;&#x6539;</p>
+<pre class="language-"><code class="lang-php"><span class="token comment">// &#x7BC0;&#x7701; mysqli_query &#x5B57;&#x6578;</span>
+<span class="token keyword">function</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">global</span> <span class="token variable">$link</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">mysqli_query</span><span class="token punctuation">(</span><span class="token variable">$link</span><span class="token punctuation">,</span> <span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7BC0;&#x7701; mysqli_fetch_array &#x5B57;&#x6578;</span>
+<span class="token keyword">function</span> <span class="token function">fa</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">mysqli_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7BC0;&#x7701; mysqli_fetch_array &#x5B57;&#x6578;&#xFF0C;&#x540C;&#x6642;&#x4EE3;&#x5165; $row &#x8B8A;&#x6578;</span>
+<span class="token keyword">function</span> <span class="token function">fa2</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$row</span><span class="token punctuation">,</span> <span class="token variable">$r</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysqli_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7BC0;&#x7701; mysqli_num_rows &#x5B57;&#x6578;</span>
+<span class="token keyword">function</span> <span class="token function">nr</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">mysqli_num_rows</span><span class="token punctuation">(</span><span class="token variable">$r</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7BC0;&#x7701; header&#x8DF3;&#x9801; &#x5B57;&#x6578;</span>
+<span class="token keyword">function</span> <span class="token function">lo</span><span class="token punctuation">(</span><span class="token variable">$l</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;location:&quot;</span><span class="token punctuation">.</span><span class="token variable">$l</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7B2C;&#x4E00;&#x984C;&#x7684;SQL&#x5F88;&#x6709;&#x898F;&#x5F8B;&#xFF0C;&#x56E0;&#x6B64;&#x5BEB;&#x6210;function</span>
+<span class="token comment">// &#x524D;&#x53F0;&#x986F;&#x793A;&#x52A0; where display = 1</span>
+<span class="token comment">// &#x5F8C;&#x53F0;&#x5247;&#x4E0D;&#x7528;(&#x986F;&#x793A;&#x6240;&#x6709;&#x8CC7;&#x6599;)</span>
+<span class="token keyword">function</span> <span class="token function">sql</span><span class="token punctuation">(</span><span class="token variable">$tb</span><span class="token punctuation">,</span> <span class="token variable">$dis</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$r</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;select * from &quot;</span><span class="token punctuation">.</span><span class="token variable">$tb</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$dis</span><span class="token punctuation">)</span>     <span class="token variable">$r</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token double-quoted-string string">&quot; where display = 1&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7B2C;&#x4E00;&#x984C;&#x7684;&#x66F4;&#x591A;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x9801;&#x548C;&#x4E00;&#x4E9B;&#x5F8C;&#x53F0;&#x9700;&#x8981;&#x5206;&#x9801;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x5BEB;&#x6210;function</span>
+<span class="token comment">// &#x5206;&#x9801;sql</span>
+<span class="token comment">// tbl&#x70BA;&#x8CC7;&#x6599;&#x8868;</span>
+<span class="token comment">// p(page)&#x70BA;&#x76EE;&#x524D;&#x9801;&#x6578;&#xFF0C;l(limit)&#x70BA;&#x4E00;&#x9801;&#x7B46;&#x6578;&#xFF0C;s(show)&#x70BA;&#x5224;&#x65B7;&#x662F;&#x5426;&#x53EA;&#x67E5;&#x8A62;&#x986F;&#x793A;</span>
+<span class="token keyword">function</span> <span class="token function">page</span><span class="token punctuation">(</span><span class="token variable">$tbl</span><span class="token punctuation">,</span> <span class="token variable">$p</span><span class="token punctuation">,</span> <span class="token variable">$l</span><span class="token punctuation">,</span> <span class="token variable">$s</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">global</span> <span class="token variable">$link</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x5F9E;&#x7B2C;&#x5E7E;&#x7B46;&#x958B;&#x59CB;&#x67E5;&#x8A62;&#xFF0C;SQL&#x7684;limit&#x7B2C;&#x4E00;&#x500B;&#x6578;&#x5B57;&#x5F9E;0&#x958B;&#x59CB;&#x7B97;</span>
+    <span class="token comment">// &quot;LIMIT 0,5&quot; &#x4EE3;&#x8868;&#x8DF3;&#x904E;0&#x7B46;&#x8CC7;&#x6599;&#x53D6;5&#x7B46;</span>
+    <span class="token comment">// &#x9801;&#x6578; |   SQL LIMIT&#x7B2C;&#x4E00;&#x500B;&#x6578;&#x5B57;</span>
+    <span class="token comment">//  1   |   1*5-5=0</span>
+    <span class="token comment">//  2   |   2*5-5=5</span>
+    <span class="token variable">$start</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token operator">*</span><span class="token variable">$l</span><span class="token operator">-</span><span class="token variable">$l</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">sql</span><span class="token punctuation">(</span><span class="token variable">$tbl</span><span class="token punctuation">,</span> <span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot; limit &quot;</span><span class="token punctuation">.</span><span class="token variable">$start</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot;, &quot;</span><span class="token punctuation">.</span><span class="token variable">$l</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5206;&#x9801;&#x9801;&#x78BC;</span>
+<span class="token comment">// tbl&#x70BA;&#x8CC7;&#x6599;&#x8868;</span>
+<span class="token comment">// p(page)&#x70BA;&#x76EE;&#x524D;&#x9801;&#x6578;&#xFF0C;l(limit)&#x70BA;&#x4E00;&#x9801;&#x7B46;&#x6578;&#xFF0C;s(show)&#x70BA;&#x5224;&#x65B7;&#x662F;&#x5426;&#x53EA;&#x67E5;&#x8A62;&#x986F;&#x793A;</span>
+<span class="token comment">// redo&#x70BA;&#x539F;&#x9801;&#x9762;&#x7684;redo&#x8B8A;&#x6578;(&#x7B2C;&#x4E00;&#x984C;&#x7684;&#x5F8C;&#x53F0;&#x4EE5; redo &#x5224;&#x65B7;&#x986F;&#x793A;&#x54EA;&#x500B;&#x7BA1;&#x7406;&#x9805;&#x76EE;)</span>
+<span class="token keyword">function</span> <span class="token function">pagelink</span><span class="token punctuation">(</span><span class="token variable">$tbl</span><span class="token punctuation">,</span> <span class="token variable">$p</span><span class="token punctuation">,</span> <span class="token variable">$l</span><span class="token punctuation">,</span> <span class="token variable">$s</span><span class="token punctuation">,</span> <span class="token variable">$redo</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">global</span> <span class="token variable">$link</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x628A;&#x8981;&#x986F;&#x793A;&#x7684;&#x6771;&#x897F;&#x4E32;&#x5728;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x88E1; return</span>
+    <span class="token variable">$r</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x7E3D;&#x9801;&#x6578;</span>
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token function">sql</span><span class="token punctuation">(</span><span class="token variable">$tbl</span><span class="token punctuation">,</span> <span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$tp</span> <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token function">nr</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token variable">$l</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x4E0B;&#x4E00;&#x9801;</span>
+    <span class="token variable">$np</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$np</span> <span class="token operator">&gt;</span> <span class="token variable">$tp</span><span class="token punctuation">)</span>    <span class="token variable">$np</span> <span class="token operator">=</span> <span class="token variable">$tp</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x4E0A;&#x4E00;&#x9801;</span>
+    <span class="token variable">$lp</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$lp</span> <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span>        <span class="token variable">$lp</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x4E0A;&#x4E00;&#x9801;&#x7684;&#x7BAD;&#x982D;</span>
+    <span class="token variable">$r</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">&apos;&lt;a class=&quot;bl&quot; style=&quot;font-size:30px;&quot; href=&quot;?p=&apos;</span><span class="token punctuation">.</span><span class="token variable">$lp</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&amp;redo=&apos;</span><span class="token punctuation">.</span><span class="token variable">$redo</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&quot;&quot;&gt;&lt; &lt;/a&gt;&apos;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x9801;&#x78BC;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;=</span><span class="token variable">$tp</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">==</span> <span class="token variable">$p</span><span class="token punctuation">)</span>    <span class="token variable">$r</span><span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">&apos;&lt;a class=&quot;bl&quot; style=&quot;font-size:50px;&quot; href=&quot;?do=meg&amp;p=&apos;</span><span class="token punctuation">.</span><span class="token variable">$i</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&amp;redo=&apos;</span><span class="token punctuation">.</span><span class="token variable">$redo</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&quot;&gt;&apos;</span><span class="token punctuation">.</span><span class="token variable">$i</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&lt;/a&gt;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>    <span class="token variable">$r</span><span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">&apos;&lt;a class=&quot;bl&quot; style=&quot;font-size:30px;&quot; href=&quot;?do=meg&amp;p=&apos;</span><span class="token punctuation">.</span><span class="token variable">$i</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&amp;redo=&apos;</span><span class="token punctuation">.</span><span class="token variable">$redo</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&quot;&gt;&apos;</span><span class="token punctuation">.</span><span class="token variable">$i</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&lt;/a&gt;&apos;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// &#x4E0B;&#x4E00;&#x9801;&#x7684;&#x7BAD;&#x982D;</span>
+    <span class="token variable">$r</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">&apos;&lt;a class=&quot;bl&quot; style=&quot;font-size:30px;&quot; href=&quot;?p=&apos;</span><span class="token punctuation">.</span><span class="token variable">$np</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&amp;redo=&apos;</span><span class="token punctuation">.</span><span class="token variable">$redo</span><span class="token punctuation">.</span><span class="token single-quoted-string string">&apos;&quot;&gt; &gt;&lt;/a&gt;&apos;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x5BEB;&#x5165;session&#x63A7;&#x5236;">&#x5BEB;&#x5165;session&#x63A7;&#x5236;</h2>
+<pre class="language-"><code class="lang-php"><span class="token comment">// &#x9032;&#x7AD9;&#x4EBA;&#x6578;</span>
+<span class="token comment">// &#x4EE5; $_SESSION[&quot;v&quot;] &#x5224;&#x65B7;&#x662F;&#x5426;&#x5DF2;&#x7D93;&#x7B97;&#x904E;&#x4EBA;&#x6578;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;v&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x96A8;&#x4FBF;&#x7D66;&#x503C;&#xFF0C;&#x4E0D;&#x662F;&#x7A7A;&#x503C;&#x5C31;&#x597D;</span>
+    <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;v&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;123&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x8CC7;&#x6599;&#x5EAB;&#x66F4;&#x65B0;&#x4EBA;&#x6578;</span>
+    <span class="token function">mq</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;update visit set count = count + 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x7BA1;&#x7406;&#x767B;&#x5165;&#x6309;&#x9215;</span>
+<span class="token comment">// &#x4EE5; $_SESSION[&quot;a&quot;] &#x5224;&#x65B7;&#x662F;&#x5426;&#x767B;&#x5165;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;a&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$btn</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&#x7BA1;&#x7406;&#x767B;&#x5165;&quot;</span><span class="token punctuation">;</span>
+    <span class="token variable">$btnh</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;login.php&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$btn</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&#x56DE;&#x5F8C;&#x53F0;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">;</span>
+    <span class="token variable">$btnh</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;admin.php&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="sql.html" class="navigation navigation-prev " aria-label="Previous page: 建立資料庫">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../front/data.html" class="navigation navigation-next " aria-label="Next page: 編輯共用資料">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"description":"SQL資料庫\"測試\"完成後，開始\"測試\"PHP，寫好共用function以及資料庫連接、session等程式碼","title":"編寫共用程式碼","level":"2.3","depth":1,"next":{"title":"編輯共用資料","level":"3.1","depth":1,"path":"front/data.md","ref":"front/data.md","articles":[]},"previous":{"title":"建立資料庫","level":"2.2","depth":1,"path":"before/sql.md","ref":"before/sql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"before/func.md","mtime":"2019-01-03T07:06:27.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T07:27:15.641Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

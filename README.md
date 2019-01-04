@@ -1,8 +1,12 @@
+---
+description: 國家技術士網頁設計乙級檢定第一題 - 卓越科技大學校園資訊系統 (17300-102201)
+---
+
 # 卓越科技大學校園資訊系統
-國家技術士-網頁設計乙級檢定-第一題-卓越科技大學校園資訊系統  
 
-## 成品參考
-http://bquiz.kento520.tw/finish/1/index.php
+國家技術士網頁設計乙級檢定第一題 - 卓越科技大學校園資訊系統 \(17300-102201\)  
+成品參考: [https://bquiz.kento520.tw/finish/1/index.php](https://bquiz.kento520.tw/finish/1/index.php)  
+解題說明: [https://rogeraabbccdd.github.io/bquiz01/](https://rogeraabbccdd.github.io/bquiz01/)
 
-## 解析
-http://bquiz.kento520.tw/solve/1/index.html
+
+
