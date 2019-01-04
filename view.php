@@ -86,6 +86,16 @@
 			<?php
 			break;
 
+		case "nmenu":
+			?>
+			<form enctype="multipart/form-data" method="post" action="api.php?do=<?=$_GET["do"]?>">
+			<input type="text" name="text">
+			<input type="text" name="href">
+			<input type="submit">
+			</form>
+			<?php
+			break;
+
 		case "upmenu":
 			?>
 			<form enctype="multipart/form-data" method="post" action="api.php?do=<?=$_GET["do"]?>&id=<?=$_GET["id"]?>">
