@@ -240,6 +240,130 @@
             
         </li>
     
+        <li class="chapter " data-level="4.3" data-path="../back/ad.html">
+            
+                <a href="../back/ad.html">
+            
+                    
+                    動態文字廣告管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../back/mvim.html">
+            
+                <a href="../back/mvim.html">
+            
+                    
+                    動畫圖片管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../back/image.html">
+            
+                <a href="../back/image.html">
+            
+                    
+                    校園映像資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../back/total.html">
+            
+                <a href="../back/total.html">
+            
+                    
+                    進站總人數管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../back/bottom.html">
+            
+                <a href="../back/bottom.html">
+            
+                    
+                    頁尾版權資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../back/news.html">
+            
+                <a href="../back/news.html">
+            
+                    
+                    最新消息資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../back/aadmin.html">
+            
+                <a href="../back/aadmin.html">
+            
+                    
+                    管理者帳號管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../back/menu.html">
+            
+                <a href="../back/menu.html">
+            
+                    
+                    選單管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">結語</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../end/end.html">
+            
+                <a href="../end/end.html">
+            
+                    
+                    結語
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -291,16 +415,16 @@
 <p>&#x627E;&#x5230; <code><span class="token comment">&lt;!--&#x6B63;&#x4E2D;&#x592E;--&gt;</span></code> &#xFF0C;&#x63D2;&#x5165;&#x52D5;&#x756B;&#x8F2A;&#x64AD;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;</p>
 <pre class="language-"><code class="lang-php"><span class="token comment">// &#x56E0;&#x70BA;&#x8F2A;&#x64AD;&#x7684;JS&#x8A2D;&#x8A08;&#x662F;&#x628A;&#x6240;&#x6709;&#x5716;&#x7247;&#x8DEF;&#x5F91;&#x653E;&#x5165;Array()</span>
 <span class="token comment">// &#x6240;&#x4EE5;&#x6211;&#x5011;&#x5C31;&#x628A;&#x8CC7;&#x6599;&#x4E32;&#x6210;&#x4E00;&#x4E32;&#xFF0C;&#x6BCF;&#x500B;&#x5716;&#x7247;&#x7528; , &#x9694;&#x958B;</span>
-<span class="token variable">$ani</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&quot;</span><span class="token punctuation">;</span>
-<span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token function">sql</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;animate&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$mvim</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&quot;</span><span class="token punctuation">;</span>
+<span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token function">sql</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;mvim&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fa2</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">,</span> <span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token variable">$ani</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token double-quoted-string string">&quot;&apos;img/&quot;</span><span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;file&quot;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">&quot;&apos;,&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="&#x4FEE;&#x6539;js">&#x4FEE;&#x6539;JS</h3>
-<p>&#x628A;&#x8B8A;&#x6578;&#x653E;&#x5165;JS</p>
-<pre class="language-"><code class="lang-php"><span class="token keyword">var</span> lin<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token delimiter important">&lt;?=</span><span class="token variable">$ani</span><span class="token delimiter important">?&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>&#x628A;&#x8B8A;&#x6578;&#x653E;&#x5165;&#x4E0B;&#x9762;&#x7684;JS</p>
+<pre class="language-"><code class="lang-php"><span class="token keyword">var</span> lin<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token delimiter important">&lt;?=</span><span class="token variable">$mvim</span><span class="token delimiter important">?&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="&#x6700;&#x65B0;&#x6D88;&#x606F;">&#x6700;&#x65B0;&#x6D88;&#x606F;</h2>
 <p>&#x627E;&#x5230;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x5340;&#xFF0C;&#x5728;&#x88E1;&#x9762;&#x7684; ul &#x6A19;&#x7C64;&#x653E;&#x5165;&#x7A0B;&#x5F0F;&#x78BC;<br>&#x9996;&#x9801;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x6ED1;&#x5165;&#x6548;&#x679C;&#x7684;JS&#x6709;&#x5169;&#x500B;(alt&#x4E00;&#x500B;&#xFF0C;altt&#x4E00;&#x500B;)&#xFF0C;&#x4F46;&#x662F;&#x66F4;&#x591A;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x9801;&#x53EA;&#x6709;altt&#xFF0C;&#x56E0;&#x6B64;&#x9019;&#x90E8;&#x5206;&#x7684;j&#x5C31;&#x642D;&#x914D;alt&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5C07;li&#x7684;class&#x8A2D;&#x70BA;sswww&#xFF0C;&#x7B49;&#x4E00;&#x4E0B;&#x505A;&#x66F4;&#x591A;&#x6700;&#x65B0;&#x6D88;&#x606F;&#x9801;&#x6642;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8907;&#x88FD;&#x8CBC;&#x4E0A;&#x505A;&#x4FEE;&#x6539;</p>
@@ -374,7 +498,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"編輯首頁index.php","title":"首頁","level":"3.2","depth":1,"next":{"title":"更多最新消息頁","level":"3.3","depth":1,"path":"front/news.md","ref":"front/news.md","articles":[]},"previous":{"title":"編輯共用資料","level":"3.1","depth":1,"path":"front/data.md","ref":"front/data.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"front/index.md","mtime":"2019-01-03T07:07:03.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T07:27:15.641Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"編輯首頁index.php","title":"首頁","level":"3.2","depth":1,"next":{"title":"更多最新消息頁","level":"3.3","depth":1,"path":"front/news.md","ref":"front/news.md","articles":[]},"previous":{"title":"編輯共用資料","level":"3.1","depth":1,"path":"front/data.md","ref":"front/data.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"front/index.md","mtime":"2019-01-04T08:34:40.100Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T12:26:36.717Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

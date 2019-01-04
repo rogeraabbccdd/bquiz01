@@ -240,6 +240,130 @@
             
         </li>
     
+        <li class="chapter " data-level="4.3" data-path="../back/ad.html">
+            
+                <a href="../back/ad.html">
+            
+                    
+                    動態文字廣告管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../back/mvim.html">
+            
+                <a href="../back/mvim.html">
+            
+                    
+                    動畫圖片管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../back/image.html">
+            
+                <a href="../back/image.html">
+            
+                    
+                    校園映像資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../back/total.html">
+            
+                <a href="../back/total.html">
+            
+                    
+                    進站總人數管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../back/bottom.html">
+            
+                <a href="../back/bottom.html">
+            
+                    
+                    頁尾版權資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../back/news.html">
+            
+                <a href="../back/news.html">
+            
+                    
+                    最新消息資料管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../back/aadmin.html">
+            
+                <a href="../back/aadmin.html">
+            
+                    
+                    管理者帳號管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../back/menu.html">
+            
+                <a href="../back/menu.html">
+            
+                    
+                    選單管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">結語</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../end/end.html">
+            
+                <a href="../end/end.html">
+            
+                    
+                    結語
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -299,7 +423,7 @@
 <span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="&#x5BEB;&#x5165;function">&#x5BEB;&#x5165;function</h2>
-<p>&#x7531;&#x65BC;&#x8003;&#x8A66;&#x6709;&#x56DB;&#x500B;&#x5C0F;&#x6642;&#x7684;&#x6642;&#x9593;&#x9650;&#x5236;&#xFF0C;&#x5C07;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x8A9E;&#x6CD5;&#x5BEB;&#x6210; function &#x4F86;&#x7E2E;&#x77ED;&#x5B57;&#x6578;&#xFF0C;&#x7BC0;&#x7701;&#x6253;&#x5B57;&#x6642;&#x9593;<br>&#x7B2C;&#x4E00;&#x984C;&#x5F8C;&#x53F0;&#x8CC7;&#x6599;&#x8655;&#x7406;&#x5927;&#x540C;&#x5C0F;&#x7570;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x53EF;&#x4EE5;&#x5BEB;&#x6210;function&#xFF0C;&#x907F;&#x514D;&#x4FEE;&#x6539;&#x7A0B;&#x5F0F;&#x78BC;&#x6F0F;&#x6539;</p>
+<p>&#x7531;&#x65BC;&#x8003;&#x8A66;&#x6709;&#x56DB;&#x500B;&#x5C0F;&#x6642;&#x7684;&#x6642;&#x9593;&#x9650;&#x5236;&#xFF0C;&#x5C07;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x8A9E;&#x6CD5;&#x5BEB;&#x6210; function &#x4F86;&#x7E2E;&#x77ED;&#x5B57;&#x6578;&#xFF0C;&#x7BC0;&#x7701;&#x6253;&#x5B57;&#x6642;&#x9593;<br>&#x7B2C;&#x4E00;&#x984C;&#x5F8C;&#x53F0;&#x8CC7;&#x6599;&#x8655;&#x7406;&#x5927;&#x540C;&#x5C0F;&#x7570;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x53EF;&#x4EE5;&#x5BEB;&#x6210;function&#xFF0C;&#x907F;&#x514D;&#x8907;&#x88FD;&#x8CBC;&#x4E0A;&#x4FEE;&#x6642;&#x6F0F;&#x6539;</p>
 <pre class="language-"><code class="lang-php"><span class="token comment">// &#x7BC0;&#x7701; mysqli_query &#x5B57;&#x6578;</span>
 <span class="token keyword">function</span> <span class="token function">mq</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
@@ -408,7 +532,7 @@
     <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">&quot;v&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">&quot;123&quot;</span><span class="token punctuation">;</span>
 
     <span class="token comment">// &#x8CC7;&#x6599;&#x5EAB;&#x66F4;&#x65B0;&#x4EBA;&#x6578;</span>
-    <span class="token function">mq</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;update visit set count = count + 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">mq</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;update total set count = count + 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x7BA1;&#x7406;&#x767B;&#x5165;&#x6309;&#x9215;</span>
@@ -467,7 +591,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"SQL資料庫\"測試\"完成後，開始\"測試\"PHP，寫好共用function以及資料庫連接、session等程式碼","title":"編寫共用程式碼","level":"2.3","depth":1,"next":{"title":"編輯共用資料","level":"3.1","depth":1,"path":"front/data.md","ref":"front/data.md","articles":[]},"previous":{"title":"建立資料庫","level":"2.2","depth":1,"path":"before/sql.md","ref":"before/sql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"before/func.md","mtime":"2019-01-03T07:06:27.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T07:27:15.641Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"SQL資料庫\"測試\"完成後，開始\"測試\"PHP，寫好共用function以及資料庫連接、session等程式碼","title":"編寫共用程式碼","level":"2.3","depth":1,"next":{"title":"編輯共用資料","level":"3.1","depth":1,"path":"front/data.md","ref":"front/data.md","articles":[]},"previous":{"title":"建立資料庫","level":"2.2","depth":1,"path":"before/sql.md","ref":"before/sql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["prism","-highlight","livereload"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"before/func.md","mtime":"2019-01-04T08:36:24.669Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T12:26:36.717Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

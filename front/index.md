@@ -13,8 +13,8 @@ description: 編輯首頁index.php
 ```php
 // 因為輪播的JS設計是把所有圖片路徑放入Array()
 // 所以我們就把資料串成一串，每個圖片用 , 隔開
-$ani = "";
-$result = mq(sql("animate", 1));
+$mvim = "";
+$result = mq(sql("mvim", 1));
 while(fa2($row, $result))
 {
 	$ani .= "'img/".$row["file"]."',";
@@ -23,10 +23,10 @@ while(fa2($row, $result))
 
 ### 修改JS
 
-把變數放入JS
+把變數放入下面的JS
 
 ```php
-var lin=new Array(<?=$ani?>);
+var lin=new Array(<?=$mvim?>);
 ```
 
 ## 最新消息
