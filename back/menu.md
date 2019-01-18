@@ -13,15 +13,15 @@ description: 編輯amenu.php
 表格的寬度可改可不改，因為題目沒有要求版型  
 ```php
 <?php
-	$result = mq(sql($_GET["redo"], 0));
-	while(fa2($row, $result))
+	$result = All(sql($_GET["redo"], 0));
+	foreach($result as $row)
 	{
 		?>
 		<tr>
 		<input type="hidden" name="id[]" value="<?=$row["id"]?>">
 		<td><input type="text" value="<?=$row["text"]?>" name="text[<?=$row["id"]?>]"></td>
 		<td><input type="text" value="<?=$row["href"]?>" name="href[<?=$row["id"]?>]"></td>
-		<td><?=fa(mq("select count(*) from menu where parent =".$row["id"]))[0]?></td>
+		<td><?=count(Fetch("select count(*) from menu where parent =".$row["id"]))[0]?></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="display[]" <?=($row["display"])?"checked":""?>></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="del[]"></td>
 		<td><input type="button" onclick="op('#cover','#cvr','view.php?do=up<?=$_GET["redo"]?>&id=<?=$row["id"]?>')" value="編輯次選單"></td>
@@ -58,8 +58,8 @@ description: 編輯amenu.php
 				<td>刪除</td>
 			</tr>
 			<?php
-				$result = mq(sql("menu", 0)." where parent =".$_GET["id"]);
-				while(fa2($row, $result))
+				$result = All(sql("menu", 0)." where parent =".$_GET["id"]);
+				foreach($result as $row)
 				{
 					?>
 					<tr>
@@ -99,11 +99,11 @@ case "upmenu":
 	// 因為新的欄位和舊的一樣，input的name卻不一樣所以我就不套function
 	for($i=0; $i<count($_POST["text2"]); $i++)
 	{
-		mq("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
+		SQLExec("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
 	}
 	foreach($_POST["del2"] as $d)
 	{
-		mq("delete from menu where id = '".$d."'");
+		SQLExec("delete from menu where id = '".$d."'");
 	}
 	lo("admin.php?redo=menu");
 	break;

@@ -18,8 +18,8 @@ description: 編輯aimage.php
 	$p = 1;
 	if(!empty($_GET["p"]))	$p = $_GET["p"];
 	$sql = page($_GET["redo"], $p, 3, 0);
-	$result = mq($sql);
-	while(fa2($row, $result))
+	$result = All($sql);
+	foreach($result as $row)
 	{
 		?>
 		<tr>

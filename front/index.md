@@ -14,8 +14,8 @@ description: 編輯首頁index.php
 // 因為輪播的JS設計是把所有圖片路徑放入Array()
 // 所以我們就把資料串成一串，每個圖片用 , 隔開
 $mvim = "";
-$result = mq(sql("mvim", 1));
-while(fa2($row, $result))
+$result = All(sql("mvim", 1));
+foreach($result as $row)
 {
 	$ani .= "'img/".$row["file"]."',";
 }
@@ -37,7 +37,7 @@ var lin=new Array(<?=$mvim?>);
 ```php
 <?php
 	// 設為顯示的最新消息筆數
-	$news_num = nr(mq(sql("news", 1)));
+	$news_num = count(All(sql("news", 1)));
 	// 如果大於5筆，顯示More...
 	if($news_num > 5) 
 	{
@@ -47,8 +47,8 @@ var lin=new Array(<?=$mvim?>);
 <span class="t botli">最新消息區</span>
 <ul class="ssaa" style="list-style-type:decimal;">
 <?php
-	$result = mq(sql("news", 1)." limit 5");
-	while(fa2($row, $result))
+	$result = All(sql("news", 1)." limit 5");
+	foreach($result as $row)
 	{
 		// 部分文字
 		$part = mb_substr($row["text"], 0, 10, "utf8");

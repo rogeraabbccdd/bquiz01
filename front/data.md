@@ -13,12 +13,9 @@ description: 將各頁都會用到的標題資料、校園映像等資料寫進�
 在 sql.php 輸入共用程式碼
 
 ```php
-$result = mq(sql("title", 1));
-while(fa2($row, $result))
-{
-	$title = "img/".$row["file"];
-	$title_text = $row["text"];
-}
+$row = Fetch(sql("title", 1));
+$title = "img/".$row["file"];
+$title_text = $row["text"];
 ```
 
 ### 插入各頁面
@@ -46,7 +43,7 @@ while(fa2($row, $result))
 在 sql.php 輸入共用程式碼
 
 ```php
-$bottom = fa(mq(sql("bottom", 0)))[0];
+$bottom = Fetch(sql("title", 1))[0];
 ```
 
 ### 插入各頁面
@@ -69,7 +66,7 @@ $bottom = fa(mq(sql("bottom", 0)))[0];
 這個變數必須要在進站判斷的 `$_SESSION["v"]` 後面，否則人數會少1，重新整理後才正常
 
 ```php
-$total = fa(mq(sql("total", 0)))[0];
+$total = Fetch(sql("title", 1))[0];
 ```
 
 ### 插入各頁面
@@ -90,23 +87,23 @@ $total = fa(mq(sql("total", 0)))[0];
 
 ```php
 // 把資料全部串在一個變數裡，插入時只要插入一個變數就好
-// 往上的按鈕, pp為素材提供的JS
+// 先放往上的按鈕, pp為素材提供的JS
 $image = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
 
-$result = mq(sql("image", 1));
-
+$result = All(sql("image", 1));
+	
 // 圖片數
-$inum = nr($result);
+$inum = count($result);
 
 $i = 0;
-while(fa2($row, $result))
+foreach($result as $row)
 {
 	// 校園映象區的JS必須要class為im，id為ssaa開頭才有效
 	$image .= "<img src='img/".$row["file"]."' class='im' id='ssaa".$i."' width='150' height='103'>";
 	$i++;
 }
 
-// 往下的按鈕, pp為素材提供的JS
+// 最後是往下的按鈕, pp為素材提供的JS
 $image .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
 
 ```
@@ -162,15 +159,15 @@ admin.php的選單素材已經寫好了
 $menu = "";
 
 // 主選單
-$result = mq(sql("menu", 1)." and parent = 0");
-while(fa2($row, $result))
+$result = All(sql("menu", 1)." and parent = 0");
+foreach($result as $row)
 {
 	// 主選單class必須為素材提供的mainmu才有動態效果
 	$menu .= "<div class='mainmu'><a href='".$row["href"]."'>".$row["text"]."</a>";
 	
 	// 主選單內的次選單
-	$result2 = mq(sql("menu", 1)." and parent = '".$row["id"]."'");
-	while(fa2($row2, $result2))
+	$result2 = All(sql("menu", 1)." and parent = '".$row["id"]."'");
+	foreach($result2 as $row2)
 	{
 		// 次選單class必須為素材提供的mainmu2才有動態效果
 		$menu .= "<div class='mainmu2 mw'><a href='".$row2["href"]."' class='mainmu2 mw'>".$row2["text"]."</a></div>";
@@ -201,8 +198,8 @@ while(fa2($row, $result))
 ```php
 // 把資料全部串在一個變數裡，插入時只要插入一個變數就好
 $ad = "";
-$result = mq(sql("ad", 1));
-while(fa2($row, $result))
+$result = All(sql("ad", 1));
+foreach($result as $row)
 {
 	$ad .= $row["text"]."&emsp;";
 }

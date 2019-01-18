@@ -13,8 +13,8 @@ description: 編輯aadmin.php
 表格的寬度可改可不改，因為題目沒有要求版型  
 ```php
 <?php
-	$result = mq(sql("admin", 0));
-	while(fa2($row, $result))
+	$result = All(sql("admin", 0));
+	foreach($result as $row)
 	{
 		?>
 		<tr>

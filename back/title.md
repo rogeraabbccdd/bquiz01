@@ -21,8 +21,8 @@ description: 編輯atitle.php
 我的do命名規則是新增以n(new)開頭，修改以u開頭(update)，後面接admin.php的redo，不過因為標題管理沒有redo，所以直接寫title
 ```php
 <?php
-	$result = mq(sql("title", 0));
-	while(fa2($row, $result))
+	$result = All(sql("title", 0));
+	foreach($result as $row)
 	{
 		?>
 			<tr>
@@ -106,8 +106,8 @@ function upd($post, $tbl, $insert)
 	$newid = -1;
 	if($insert)	
 	{
-		mq("insert into ".$tbl." (id) values (null);");	
-		$newid = mysqli_insert_id($link);
+		SQLExec("insert into ".$tbl." (id) values (null);");	
+		$newid = $pdo->lastInsertId();
 	}
 
 	// 迴圈表單的資料
@@ -120,18 +120,18 @@ function upd($post, $tbl, $insert)
 			switch($name){
 				// title的display
 				case "display":
-					mq("update ".$tbl." set display = 1 where id = ".$v);
+					SQLExec("update ".$tbl." set display = 1 where id = ".$v);
 					break;
 
 				// footer、進站人數
 				case "bottom":
 				case "count":
-					mq("update ".$tbl." set ".$name." = '".$v."'");
+					SQLExec("update ".$tbl." set ".$name." = '".$v."'");
 					break;
 				
 				// 新增文字廣告、新增最新消息、新增管理員、新增主選單
 				default:
-				mq("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
+					SQLExec("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
 					break;
 			}
 		}
@@ -144,23 +144,23 @@ function upd($post, $tbl, $insert)
 				{
 					// 有傳ID的東西設為不顯示
 					case "id":
-						mq("update ".$tbl." set display = 0 where id = ".$vv);
+						SQLExec("update ".$tbl." set display = 0 where id = ".$vv);
 						break;
 
 					// 再把要顯示的設為顯示
 					case "display":
 						if($insert) $vv = $newid;
-						mq("update ".$tbl." set display = 1 where id = ".$vv);
+						SQLExec("update ".$tbl." set display = 1 where id = ".$vv);
 						break;
 
 					case "del":
-						mq("delete from ".$tbl." where id = ".$vv);
+						SQLExec("delete from ".$tbl." where id = ".$vv);
 						break;
 					
 					// 文字、管理者帳號及密碼、選單文字及連結
 					default:
 						if($insert) $vv = $newid;
-						mq("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
+						SQLExec("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
 						break;					
 				}
 			}
@@ -185,7 +185,7 @@ function upfile($file, $tbl, $id)
 	
 	copy($file["file"]["tmp_name"], "img/".$name);
 	
-	mq("update ".$tbl." set file = '".$name."' where id = '".$id."'");
+	SQLExec("update ".$tbl." set file = '".$name."' where id = '".$id."'");
 }
 ```
 

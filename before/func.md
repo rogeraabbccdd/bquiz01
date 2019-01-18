@@ -12,47 +12,38 @@ description: SQL資料庫"測試"完成後，開始"測試"PHP，寫好共用fun
 
 ```php
 /*** 開啟資料庫連接 ***/
-$link = mysqli_connect("localhost", "root", "", "dbxx");
-	
-/*** 設定UTF8 ***/
-mysqli_query($link, "set names utf8");
-
-/* 開始session */
-session_start();
+$pdo = new PDO("mysql:host=localhost;dbname=dbxx;charset=utf8", "root", "");
 ```
 
 ## 寫入function
 
 由於考試有四個小時的時間限制，將一些常用語法寫成 function 來縮短字數，節省打字時間  
-第一題後台資料處理大同小異，因此也可以寫成function，避免複製貼上修時漏改
-
+第一題後台資料處理大同小異，因此也可以寫成function，避免複製貼上修時漏改  
 ```php
-// 節省 mysqli_query 字數
-function mq($sql)
+// 節省 fetchAll 字數
+function All($sql)
 {
-	global $link;
-	return mysqli_query($link, $sql);
+	global $pdo;
+	return $pdo->query($sql)->fetchAll();
 }
 
-// 節省 mysqli_fetch_array 字數
-function fa($r)
+// 節省 Fetch 字數
+function Fetch($sql)
 {
-	return mysqli_fetch_array($r);
+	global $pdo;
+	return $pdo->query($sql)->fetch();
 }
 
-// 節省 mysqli_fetch_array 字數，同時代入 $row 變數
-function fa2(&$row, $r)
+// 節省 exec 字數
+// "Exec"會用到預設函式，所以加個SQL
+function SQLExec($sql)
 {
-	return $row = mysqli_fetch_array($r);
-}
-
-// 節省 mysqli_num_rows 字數
-function nr($r)
-{
-	return mysqli_num_rows($r);
+	global $pdo;
+	return $pdo->exec($sql);
 }
 
 // 節省 header跳頁 字數
+// 其他題版型自訂的Javascript跳頁函式名稱也叫lo
 function lo($l)
 {
 	return header("location:".$l);
@@ -99,8 +90,8 @@ function pagelink($tbl, $p, $l, $s, $redo)
 	$r = "";
 
 	// 總頁數
-	$result = mq(sql($tbl, $s));
-	$tp = ceil(nr($result) / $l);
+	$result = All(sql($tbl, $s));
+	$tp = ceil(count($result) / $l);
 
 	// 下一頁
 	$np = $p+1;
@@ -138,7 +129,7 @@ if(empty($_SESSION["v"]))
 	$_SESSION["v"] = "123";
 	
 	// 資料庫更新人數
-	mq("update total set count = count + 1");
+	SQLExec("update total set count = count + 1");
 }
 
 // 管理登入按鈕
