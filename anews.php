@@ -10,8 +10,8 @@
         	<td width="45%">最新消息資料內容</td><td width="7%">顯示</td><td width="7%">刪除</td>
                     </tr>
 					<?php
-						$result = mq($sql);
-						while(fa2($row, $result))
+						$result = All($sql);
+						foreach($result as $row)
 						{
 							?>
 							<tr>

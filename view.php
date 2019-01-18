@@ -106,8 +106,8 @@
 					<td>刪除</td>
 				</tr>
 				<?php
-					$result = mq(sql("menu", 0)." where parent =".$_GET["id"]);
-					while(fa2($row, $result))
+					$result = All(sql("menu", 0)." where parent =".$_GET["id"]);
+					foreach($result as $row)
 					{
 						?>
 						<tr>

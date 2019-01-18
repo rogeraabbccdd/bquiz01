@@ -37,8 +37,8 @@
                                         <!--正中央-->
 						<?php
 							$mvim = "";
-							$result = mq(sql("mvim", 1));
-							while(fa2($row, $result))
+							$result = All(sql("mvim", 1));
+							foreach($result as $row)
 							{
 								$mvim .= "'img/".$row["file"]."',";
 							}
@@ -68,7 +68,7 @@
                     </div>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
 							<?php
-								$news_num = nr(mq(sql("news", 1)));
+								$news_num = count(All(sql("news", 1)));
 								if($news_num > 5) 
 								{
 									echo "<span style='float:right'><a href='news.php'>More...</a></span>";
@@ -77,8 +77,8 @@
                     		<span class="t botli">最新消息區</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
 							<?php
-								$result = mq(sql("news", 1)." limit 5");
-								while(fa2($row, $result))
+								$result = All(sql("news", 1)." limit 5");
+								foreach($result as $row)
 								{
 									$part = mb_substr($row["text"], 0, 10, "utf8");
 									

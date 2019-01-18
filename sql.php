@@ -1,14 +1,12 @@
 <?php
-	$link = mysqli_connect("localhost", "root", "", "dbxx");
-	mysqli_query($link, "set names utf8");
-	
+	$pdo = new PDO("mysql:host=localhost;dbname=dbxx;charset=utf8", "root", "");
 	/***** session *****/
 	session_start();
 	
 	if(empty($_SESSION["v"]))
 	{
 		$_SESSION["v"] = "123";
-		mq("update total set count = count + 1");
+		SQLExec("update total set count = count + 1");
 	}
 	
 	if(empty($_SESSION["a"]))
@@ -22,28 +20,24 @@
 		$btnh = "admin.php";
 	}
 	
-	/***** function *****/
-	function mq($sql)
+	function All($sql)
 	{
-		global $link;
-		return mysqli_query($link, $sql);
+		global $pdo;
+		return $pdo->query($sql)->fetchAll();
 	}
-	
-	function fa($r)
+
+	function Fetch($sql)
 	{
-		return mysqli_fetch_array($r);
+		global $pdo;
+		return $pdo->query($sql)->fetch();
 	}
-	
-	function fa2(&$row, $r)
+
+	function SQLExec($sql)
 	{
-		return $row = mysqli_fetch_array($r);
+		global $pdo;
+		return $pdo->exec($sql);
 	}
-	
-	function nr($r)
-	{
-		return mysqli_num_rows($r);
-	}
-	
+
 	function lo($l)
 	{
 		return header("location:".$l);
@@ -72,8 +66,8 @@
 
 		$r = "";
 
-		$result = mq(sql($tbl, $s));
-		$tp = ceil(mysqli_num_rows($result) / $l);
+		$result = All(sql($tbl, $s));
+		$tp = ceil(count($result) / $l);
 
 		$np = $p+1;
 		if($np > $tp)	$np = $tp;
@@ -101,8 +95,8 @@
 		$newid = -1;
 		if($insert)	
 		{
-			mq("insert into ".$tbl." (id) values (null);");	
-			$newid = mysqli_insert_id($link);
+			SQLExec("insert into ".$tbl." (id) values (null);");	
+			$newid = $pdo->lastInsertId();
 		}
 
 		// 迴圈表單的資料
@@ -115,18 +109,18 @@
 				switch($name){
 					// title的display
 					case "display":
-						mq("update ".$tbl." set display = 1 where id = ".$v);
+						SQLExec("update ".$tbl." set display = 1 where id = ".$v);
 						break;
 
 					// footer、進站人數
 					case "bottom":
 					case "count":
-						mq("update ".$tbl." set ".$name." = '".$v."'");
+						SQLExec("update ".$tbl." set ".$name." = '".$v."'");
 						break;
 					
 					// 新增文字廣告、新增最新消息、新增管理員、新增主選單
 					default:
-					mq("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
+						SQLExec("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
 						break;
 				}
 			}
@@ -139,21 +133,21 @@
 					{
 						case "display":
 							if($insert) $vv = $newid;
-							mq("update ".$tbl." set display = 1 where id = ".$vv);
+							SQLExec("update ".$tbl." set display = 1 where id = ".$vv);
 							break;
 
 						case "del":
-							mq("delete from ".$tbl." where id = ".$vv);
+							SQLExec("delete from ".$tbl." where id = ".$vv);
 							break;
 						
 						case "id":
-							mq("update ".$tbl." set display = 0 where id = ".$vv);
+							SQLExec("update ".$tbl." set display = 0 where id = ".$vv);
 							break;
 						
 						// 文字、管理者帳號及密碼、選單文字及連結
 						default:
 							if($insert) $vv = $newid;
-							mq("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
+							SQLExec("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
 							break;					
 					}
 				}
@@ -173,26 +167,23 @@
 		
 		copy($file["file"]["tmp_name"], "img/".$name);
 		
-		mq("update ".$tbl." set file = '".$name."' where id = '".$id."'");
+		SQLExec("update ".$tbl." set file = '".$name."' where id = '".$id."'");
 	}
 
 	/***** 共用資料 *****/
-	$result = mq(sql("title", 1));
-	while(fa2($row, $result))
-	{
-		$title = "img/".$row["file"];
-		$title_text = $row["text"];
-	}
+	$row = Fetch(sql("title", 1));
+	$title = "img/".$row["file"];
+	$title_text = $row["text"];
 	
-	$bottom = fa(mq(sql("bottom", 0)))[0];
-	$total = fa(mq(sql("total", 0)))[0];
+	$bottom = Fetch(sql("title", 1))[0];
+	$total = Fetch(sql("title", 1))[0];
 	
 	$image = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
-	$result = mq(sql("image", 1));
-	$inum = nr($result);
+	$result = All(sql("image", 1));
+	$inum = count($result);
 	
 	$i = 0;
-	while(fa2($row, $result))
+	foreach($result as $row)
 	{
 		$image .= "<img src='img/".$row["file"]."' class='im' id='ssaa".$i."' width='150' height='103'>";
 		$i++;
@@ -200,13 +191,13 @@
 	$image .= "<br><img src='img/01E02.jpg' onclick='pp(2)'>";
 	
 	$menu = "";
-	$result = mq(sql("menu", 1)." and parent = 0");
-	while(fa2($row, $result))
+	$result = All(sql("menu", 1)." and parent = 0");
+	foreach($result as $row)
 	{
 		$menu .= "<div class='mainmu'><a href='".$row["href"]."'>".$row["text"]."</a>";
 		
-		$result2 = mq(sql("menu", 1)." and parent = '".$row["id"]."'");
-		while(fa2($row2, $result2))
+		$result2 = All(sql("menu", 1)." and parent = '".$row["id"]."'");
+		foreach($result2 as $row2)
 		{
 			$menu .= "<div class='mainmu2 mw'><a href='".$row2["href"]."' class='mainmu2 mw'>".$row2["text"]."</a></div>";
 		}
@@ -215,8 +206,8 @@
 	}
 	
 	$ad = "";
-	$result = mq(sql("ad", 1));
-	while(fa2($row, $result))
+	$result = All(sql("ad", 1));
+	foreach($result as $row)
 	{
 		$ad .= $row["text"]."&emsp;";
 	}

@@ -5,15 +5,15 @@
 			<td width="45%">主選單名稱</td><td width="23%">主選單連結網址</td><td>次選單數</td><td width="7%">顯示</td><td width="7%">刪除</td><td></td>
                     </tr>
 					<?php
-						$result = mq(sql($_GET["redo"], 0));
-						while(fa2($row, $result))
+						$result = All(sql($_GET["redo"], 0));
+						foreach($result as $row)
 						{
 							?>
 							<tr>
 							<input type="hidden" name="id[]" value="<?=$row["id"]?>">
 							<td><input type="text" value="<?=$row["text"]?>" name="text[<?=$row["id"]?>]"></td>
 							<td><input type="text" value="<?=$row["href"]?>" name="href[<?=$row["id"]?>]"></td>
-							<td><?=fa(mq("select count(*) from menu where parent =".$row["id"]))[0]?></td>
+							<td><?=count(Fetch("select count(*) from menu where parent =".$row["id"]))[0]?></td>
 							<td><input type="checkbox" value="<?=$row["id"]?>" name="display[]" <?=($row["display"])?"checked":""?>></td>
 							<td><input type="checkbox" value="<?=$row["id"]?>" name="del[]"></td>
 							<td><input type="button" onclick="op('#cover','#cvr','view.php?do=up<?=$_GET["redo"]?>&id=<?=$row["id"]?>')" value="編輯次選單"></td>

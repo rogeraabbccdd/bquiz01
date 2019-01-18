@@ -4,13 +4,12 @@
 	switch($_GET["do"])
 	{
 		case "check":
-			$result = mq(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
+			$row = Fetch(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
 
-			$num = nr($result);
+			$num = count($result);
 
 			if($num > 0)
 			{
-				$row = fa($result);
 				$_SESSION["a"] = $row["acc"];
 				lo("admin.php");
 			}
@@ -119,11 +118,11 @@
 			upd($_POST, "menu", 0);
 			for($i=0; $i<count($_POST["text2"]); $i++)
 			{
-				mq("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
+				SQLExec("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
 			}
 			foreach($_POST["del2"] as $d)
 			{
-				mq("delete from menu where id = '".$d."'");
+				SQLExec("delete from menu where id = '".$d."'");
 			}
 			lo("admin.php?redo=menu");
 			break;

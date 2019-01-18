@@ -43,8 +43,8 @@
 						<ol class="ssaa" style="list-style-type:decimal;" start="<?=($p*5-4)?>">
 							<?php
 								$sql = page("news", $p, 5, 1);
-								$result = mq($sql);
-								while(fa2($row, $result))
+								$result = All($sql);
+								foreach($result as $row)
 								{
 									$part = mb_substr($row["text"], 0, 20, "utf8");
 									?>

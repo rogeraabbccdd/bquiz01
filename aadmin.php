@@ -5,8 +5,8 @@
         	<td width="45%">帳號</td><td width="23%">密碼</td><td width="7%">刪除</td><td></td>
                     </tr>
 					<?php
-						$result = mq(sql("admin", 0));
-						while(fa2($row, $result))
+						$result = All(sql("admin", 0));
+						foreach($result as $row)
 						{
 							?>
 							<tr>

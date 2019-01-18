@@ -5,8 +5,8 @@
         	<td width="45%">動畫圖片</td><td width="7%">顯示</td><td width="7%">刪除</td><td></td>
                     </tr>
 					<?php
-						$result = mq(sql($_GET["redo"], 0));
-						while(fa2($row, $result))
+						$result = All(sql($_GET["redo"], 0));
+						foreach($result as $row)
 						{
 							?>
 							<tr>
