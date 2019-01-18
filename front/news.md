@@ -30,8 +30,8 @@ if(!empty($_GET["p"]))	$p = $_GET["p"];
 	<?php
 		// 分頁SQL
 		$sql = page("news", $p, 5, 1);
-		$result = mq($sql);
-		while(fa2($row, $result))
+		$result = All($sql);
+		foreach($result as $row)
 		{
 			// 這裡和首頁一樣寫法
 			$part = mb_substr($row["text"], 0, 20, "utf8");

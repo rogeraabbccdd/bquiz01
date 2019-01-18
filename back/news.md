@@ -18,8 +18,8 @@ description: 編輯anews.php
 	$p = 1;
 	if(!empty($_GET["p"]))	$p = $_GET["p"];
 	$sql = page($_GET["redo"], $p, 5, 0);
-	$result = mq($sql);
-	while(fa2($row, $result))
+	$result = All($sql);
+	foreach($result as $row)
 	{
 		?>
 		<tr>

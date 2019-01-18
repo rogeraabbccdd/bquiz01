@@ -34,15 +34,14 @@ description: 編輯登入頁login.php
 ```php
 case "check":
 	// 查詢帳號密碼
-	$result = mq(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
+	$row = Fetch(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
 
 	// 查詢資料筆數
-	$num = nr($result);
+	$num = count($result);
 
 	// 有資料，登入
 	if($num > 0)
 	{
-		$row = fa($result);
 		$_SESSION["a"] = $row["acc"];
 		lo("admin.php");
 	}

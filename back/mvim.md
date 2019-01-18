@@ -14,8 +14,8 @@ description: 編輯amvim.php
 這裡也把更換按鈕的連結redo改為`<?=$_GET["redo"]?>`，之後的頁面就可以直接複製，不用修改
 ```php
 <?php
-	$result = mq(sql($_GET["redo"], 0));
-	while(fa2($row, $result))
+	$result = All(sql($_GET["redo"], 0));
+	foreach($result as $row)
 	{
 		?>
 		<tr>

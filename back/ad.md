@@ -23,8 +23,8 @@ description: 編輯aad.php
 表格的寬度可改可不改，因為題目沒有要求版型
 ```php
 <?php
-	$result = mq(sql($_GET["redo"], 0));
-	while(fa2($row, $result))
+	$result = All(sql($_GET["redo"], 0));
+	foreach($result as $row)
 	{
 		?>
 		<tr>
