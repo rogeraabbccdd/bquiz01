@@ -1,10 +1,16 @@
 {
-	"plugins": ["prism", "-highlight"],
+	"plugins": ["prism", "-highlight", "ga"],
 	"pluginsConfig": {
 		"prism": {
 			"css": [
 				"prismjs/themes/prism-okaidia.css"
 			]
+		},
+		"ga": {
+            "token": ""
+		},
+		"fontsettings": {
+			"theme": "night"
 		}
 	}
 }

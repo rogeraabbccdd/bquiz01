@@ -66,7 +66,7 @@ function sql($tb, $dis)
 // p(page)為目前頁數，l(limit)為一頁筆數，s(show)為判斷是否只查詢顯示
 function page($tbl, $p, $l, $s)
 {
-	global $link;
+	global $pdo;
 
 	// 從第幾筆開始查詢，SQL的limit第一個數字從0開始算
 	// "LIMIT 0,5" 代表跳過0筆資料取5筆
@@ -84,7 +84,7 @@ function page($tbl, $p, $l, $s)
 // redo為原頁面的redo變數(第一題的後台以 redo 判斷顯示哪個管理項目)
 function pagelink($tbl, $p, $l, $s, $redo)
 {
-	global $link;
+	global $pdo;
 
 	// 把要顯示的東西串在一個變數裡 return
 	$r = "";

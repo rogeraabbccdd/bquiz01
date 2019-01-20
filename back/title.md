@@ -101,7 +101,7 @@ description: 編輯atitle.php
 // $insert為是否要新增一筆資料
 function upd($post, $tbl, $insert)
 {
-	global $link; 
+	global $pdo; 
 	// 如果有要INSERT，先新增一筆只有ID的資料
 	$newid = -1;
 	if($insert)	
