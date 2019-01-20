@@ -53,7 +53,7 @@
 	
 	function page($tbl, $p, $l, $s)
 	{
-		global $link;
+		global $pdo;
 
 		$start = $p*$l-$l;
 
@@ -62,7 +62,7 @@
 
 	function pagelink($tbl, $p, $l, $s, $redo)
 	{
-		global $link;
+		global $pdo;
 
 		$r = "";
 
@@ -90,7 +90,8 @@
 	
 	function upd($post, $tbl, $insert)
 	{
-		global $link; 
+		global $pdo; 
+
 		// 如果有要INSERT，先新增一筆只有ID的資料
 		$newid = -1;
 		if($insert)	
@@ -161,6 +162,8 @@
 	
 	function upfile($file, $tbl, $id)
 	{
+		global $pdo; 
+		
 		$date = strtotime("now");
 		$ext = pathinfo($file["file"]["name"], PATHINFO_EXTENSION);
 		$name = $date.".".$ext;
