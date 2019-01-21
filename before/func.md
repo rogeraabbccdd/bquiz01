@@ -82,6 +82,7 @@ function page($tbl, $p, $l, $s)
 // tbl為資料表
 // p(page)為目前頁數，l(limit)為一頁筆數，s(show)為判斷是否只查詢顯示
 // redo為原頁面的redo變數(第一題的後台以 redo 判斷顯示哪個管理項目)
+// 最新消息頁有提供分頁頁碼的左右箭頭，複製過來改就好
 function pagelink($tbl, $p, $l, $s, $redo)
 {
 	global $pdo;
