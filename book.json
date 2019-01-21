@@ -1,5 +1,5 @@
 {
-	"plugins": ["prism", "-highlight", "ga"],
+	"plugins": ["prism", "-highlight", "ga", "github", "github-buttons"],
 	"pluginsConfig": {
 		"prism": {
 			"css": [
@@ -11,6 +11,20 @@
 		},
 		"fontsettings": {
 			"theme": "night"
+		},
+		"github": {
+            "url": "https://github.com/rogeraabbccdd/bquiz01"
+		},
+		"github-buttons": {
+			"buttons": [
+				{
+				"user": "rogeraabbccdd",
+				"repo": "bquiz01",
+				"type": "star",
+				"size": "small",
+				"count": true
+				}
+			]
 		}
 	}
 }
