@@ -93,7 +93,8 @@ description: 編輯atitle.php
 
 在 sql.php 加入處理表單的function  
 因為這題的檔案上傳都是單檔上傳，且有些地方只要處理檔案，不用處理表單，所以我分成兩個function  
-要注意的地方是foreach沒有收到值的話會跳出警告訊息，不過處理表單後會瞬間跳回管理頁所以看不到，這是為了應付考試才沒有寫判斷
+要注意的地方是foreach沒有收到值的話會跳出警告訊息，不過處理表單後會瞬間跳回管理頁所以看不到，這是為了應付考試才沒有寫判斷  
+
 ```php
 // 處理表單資料
 // $post 為 $_POST
@@ -106,7 +107,7 @@ function upd($post, $tbl, $insert)
 	$newid = -1;
 	if($insert)	
 	{
-		SQLExec("insert into ".$tbl." (id) values (null);");	
+		All("insert into ".$tbl." (id) values (null);");	
 		$newid = $pdo->lastInsertId();
 	}
 
@@ -120,18 +121,18 @@ function upd($post, $tbl, $insert)
 			switch($name){
 				// title的display
 				case "display":
-					SQLExec("update ".$tbl." set display = 1 where id = ".$v);
+					All("update ".$tbl." set display = 1 where id = ".$v);
 					break;
 
 				// footer、進站人數
 				case "bottom":
 				case "count":
-					SQLExec("update ".$tbl." set ".$name." = '".$v."'");
+					All("update ".$tbl." set ".$name." = '".$v."'");
 					break;
 				
 				// 新增文字廣告、新增最新消息、新增管理員、新增主選單
 				default:
-					SQLExec("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
+					All("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
 					break;
 			}
 		}
@@ -144,23 +145,23 @@ function upd($post, $tbl, $insert)
 				{
 					// 有傳ID的東西設為不顯示
 					case "id":
-						SQLExec("update ".$tbl." set display = 0 where id = ".$vv);
+						All("update ".$tbl." set display = 0 where id = ".$vv);
 						break;
 
 					// 再把要顯示的設為顯示
 					case "display":
 						if($insert) $vv = $newid;
-						SQLExec("update ".$tbl." set display = 1 where id = ".$vv);
+						All("update ".$tbl." set display = 1 where id = ".$vv);
 						break;
 
 					case "del":
-						SQLExec("delete from ".$tbl." where id = ".$vv);
+						All("delete from ".$tbl." where id = ".$vv);
 						break;
 					
 					// 文字、管理者帳號及密碼、選單文字及連結
 					default:
 						if($insert) $vv = $newid;
-						SQLExec("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
+						All("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
 						break;					
 				}
 			}
@@ -185,7 +186,7 @@ function upfile($file, $tbl, $id)
 	
 	copy($file["file"]["tmp_name"], "img/".$name);
 	
-	SQLExec("update ".$tbl." set file = '".$name."' where id = '".$id."'");
+	All("update ".$tbl." set file = '".$name."' where id = '".$id."'");
 }
 ```
 

@@ -21,25 +21,11 @@ $pdo = new PDO("mysql:host=localhost;dbname=dbxx;charset=utf8", "root", "");
 第一題後台資料處理大同小異，因此也可以寫成function，避免複製貼上修時漏改  
 ```php
 // 節省 fetchAll 字數
+// 只寫fetchAll就夠了，因為fetchAll有含query，所以更新和刪除資料也能用
 function All($sql)
 {
 	global $pdo;
 	return $pdo->query($sql)->fetchAll();
-}
-
-// 節省 Fetch 字數
-function Fetch($sql)
-{
-	global $pdo;
-	return $pdo->query($sql)->fetch();
-}
-
-// 節省 exec 字數
-// "Exec"會用到預設函式，所以加個SQL
-function SQLExec($sql)
-{
-	global $pdo;
-	return $pdo->exec($sql);
 }
 
 // 節省 header跳頁 字數
