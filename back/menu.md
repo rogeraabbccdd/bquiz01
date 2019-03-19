@@ -13,7 +13,7 @@ description: 編輯amenu.php
 表格的寬度可改可不改，因為題目沒有要求版型  
 ```php
 <?php
-	$result = All(sql($_GET["redo"], 0));
+	$result = All(sql($_GET["redo"], 0)." where parent = '0'");
 	foreach($result as $row)
 	{
 		?>
@@ -21,7 +21,7 @@ description: 編輯amenu.php
 		<input type="hidden" name="id[]" value="<?=$row["id"]?>">
 		<td><input type="text" value="<?=$row["text"]?>" name="text[<?=$row["id"]?>]"></td>
 		<td><input type="text" value="<?=$row["href"]?>" name="href[<?=$row["id"]?>]"></td>
-		<td><?=count(Fetch("select count(*) from menu where parent =".$row["id"]))[0]?></td>
+		<td><?=count(All("select count(*) from menu where parent =".$row["id"]))[0][0]?></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="display[]" <?=($row["display"])?"checked":""?>></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="del[]"></td>
 		<td><input type="button" onclick="op('#cover','#cvr','view.php?do=up<?=$_GET["redo"]?>&id=<?=$row["id"]?>')" value="編輯次選單"></td>
@@ -99,16 +99,17 @@ case "upmenu":
 	// 因為新的欄位和舊的一樣，input的name卻不一樣所以我就不套function
 	for($i=0; $i<count($_POST["text2"]); $i++)
 	{
-		SQLExec("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
+		All("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
 	}
 	foreach($_POST["del2"] as $d)
 	{
-		SQLExec("delete from menu where id = '".$d."'");
+		All("delete from menu where id = '".$d."'");
 	}
 	lo("admin.php?redo=menu");
 	break;
 
 case "nmenu":
 	upd($_POST, "menu", 1);
+	lo("admin.php?redo=menu");
 	break;
 ```

@@ -13,7 +13,7 @@ description: 將各頁都會用到的標題資料、校園映像等資料寫進�
 在 sql.php 輸入共用程式碼
 
 ```php
-$row = Fetch(sql("title", 1));
+$row = All(sql("title", 1))[0];
 $title = "img/".$row["file"];
 $title_text = $row["text"];
 ```
@@ -43,7 +43,7 @@ $title_text = $row["text"];
 在 sql.php 輸入共用程式碼
 
 ```php
-$bottom = Fetch(sql("title", 1))[0];
+$bottom = All(sql("title", 1))[0][0];
 ```
 
 ### 插入各頁面
@@ -66,7 +66,7 @@ $bottom = Fetch(sql("title", 1))[0];
 這個變數必須要在進站判斷的 `$_SESSION["v"]` 後面，否則人數會少1，重新整理後才正常
 
 ```php
-$total = Fetch(sql("title", 1))[0];
+$total = All(sql("title", 1))[0][0];
 ```
 
 ### 插入各頁面

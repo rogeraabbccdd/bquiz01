@@ -34,7 +34,7 @@ description: 編輯登入頁login.php
 ```php
 case "check":
 	// 查詢帳號密碼
-	$row = Fetch(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
+	$result = All(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
 
 	// 查詢資料筆數
 	$num = count($result);
@@ -42,7 +42,7 @@ case "check":
 	// 有資料，登入
 	if($num > 0)
 	{
-		$_SESSION["a"] = $row["acc"];
+		$_SESSION["a"] = $result[0]["acc"];
 		lo("admin.php");
 	}
 
