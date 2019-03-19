@@ -6,7 +6,7 @@
 	if(empty($_SESSION["v"]))
 	{
 		$_SESSION["v"] = "123";
-		SQLExec("update total set count = count + 1");
+		All("update total set count = count + 1");
 	}
 	
 	if(empty($_SESSION["a"]))
@@ -24,18 +24,6 @@
 	{
 		global $pdo;
 		return $pdo->query($sql)->fetchAll();
-	}
-
-	function Fetch($sql)
-	{
-		global $pdo;
-		return $pdo->query($sql)->fetch();
-	}
-
-	function SQLExec($sql)
-	{
-		global $pdo;
-		return $pdo->exec($sql);
 	}
 
 	function lo($l)
@@ -96,7 +84,7 @@
 		$newid = -1;
 		if($insert)	
 		{
-			SQLExec("insert into ".$tbl." (id) values (null);");	
+			All("insert into ".$tbl." (id) values (null);");	
 			$newid = $pdo->lastInsertId();
 		}
 
@@ -110,18 +98,18 @@
 				switch($name){
 					// title的display
 					case "display":
-						SQLExec("update ".$tbl." set display = 1 where id = ".$v);
+						All("update ".$tbl." set display = 1 where id = ".$v);
 						break;
 
 					// footer、進站人數
 					case "bottom":
 					case "count":
-						SQLExec("update ".$tbl." set ".$name." = '".$v."'");
+						All("update ".$tbl." set ".$name." = '".$v."'");
 						break;
 					
 					// 新增文字廣告、新增最新消息、新增管理員、新增主選單
 					default:
-						SQLExec("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
+						All("update ".$tbl." set ".$name." = '".$v."' where id = ".$newid);
 						break;
 				}
 			}
@@ -134,21 +122,21 @@
 					{
 						case "display":
 							if($insert) $vv = $newid;
-							SQLExec("update ".$tbl." set display = 1 where id = ".$vv);
+							All("update ".$tbl." set display = 1 where id = ".$vv);
 							break;
 
 						case "del":
-							SQLExec("delete from ".$tbl." where id = ".$vv);
+							All("delete from ".$tbl." where id = ".$vv);
 							break;
 						
 						case "id":
-							SQLExec("update ".$tbl." set display = 0 where id = ".$vv);
+							All("update ".$tbl." set display = 0 where id = ".$vv);
 							break;
 						
 						// 文字、管理者帳號及密碼、選單文字及連結
 						default:
 							if($insert) $vv = $newid;
-							SQLExec("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
+							All("update ".$tbl." set ".$name." = '".$vv."' where id = ".$id);
 							break;					
 					}
 				}
@@ -170,16 +158,16 @@
 		
 		copy($file["file"]["tmp_name"], "img/".$name);
 		
-		SQLExec("update ".$tbl." set file = '".$name."' where id = '".$id."'");
+		All("update ".$tbl." set file = '".$name."' where id = '".$id."'");
 	}
 
 	/***** 共用資料 *****/
-	$row = Fetch(sql("title", 1));
+	$row = All(sql("title", 1))[0];
 	$title = "img/".$row["file"];
 	$title_text = $row["text"];
 	
-	$bottom = Fetch(sql("title", 1))[0];
-	$total = Fetch(sql("title", 1))[0];
+	$bottom = All(sql("title", 1))[0][0];
+	$total = All(sql("title", 1))[0][0];
 	
 	$image = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
 	$result = All(sql("image", 1));

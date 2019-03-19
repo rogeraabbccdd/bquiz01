@@ -4,13 +4,13 @@
 	switch($_GET["do"])
 	{
 		case "check":
-			$row = Fetch(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
+			$result = All(sql("admin", 0)." where acc = '".$_POST["acc"]."' and pass = '".$_POST["ps"]."'");
 
 			$num = count($result);
 
 			if($num > 0)
 			{
-				$_SESSION["a"] = $row["acc"];
+				$_SESSION["a"] = $result[0]["acc"];
 				lo("admin.php");
 			}
 			else echo "<script>alert('帳號或密碼輸入錯誤'); window.history.back();</script>";
@@ -118,17 +118,18 @@
 			upd($_POST, "menu", 0);
 			for($i=0; $i<count($_POST["text2"]); $i++)
 			{
-				SQLExec("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
+				All("insert into menu values (null, '".$_POST["text2"][$i]."', '".$_POST["href2"][$i]."', '1', '".$_GET["id"]."')");
 			}
 			foreach($_POST["del2"] as $d)
 			{
-				SQLExec("delete from menu where id = '".$d."'");
+				All("delete from menu where id = '".$d."'");
 			}
 			lo("admin.php?redo=menu");
 			break;
 
 		case "nmenu":
 			upd($_POST, "menu", 1);
+			lo("admin.php?redo=menu");
 			break;
 	}
 ?>
