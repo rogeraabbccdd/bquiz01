@@ -15,7 +15,7 @@ description: SQL資料庫"測試"完成後，開始"測試"PHP，寫好共用fun
 $pdo = new PDO("mysql:host=localhost;dbname=dbxx;charset=utf8", "root", "");
 ```
 
-## 寫入function
+## 寫入通用function
 
 由於考試有四個小時的時間限制，將一些常用語法寫成 function 來縮短字數，節省打字時間  
 第一題後台資料處理大同小異，因此也可以寫成function，避免複製貼上修時漏改  
@@ -116,7 +116,7 @@ if(empty($_SESSION["v"]))
 	$_SESSION["v"] = "123";
 	
 	// 資料庫更新人數
-	SQLExec("update total set count = count + 1");
+	All("update total set count = count + 1");
 }
 
 // 管理登入按鈕
