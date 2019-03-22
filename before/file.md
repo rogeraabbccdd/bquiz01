@@ -6,7 +6,10 @@ description: 在考前安裝XAMPP時利用時間整理各題素材
 
 ## 重新命名檔案
 
-重新命名`01P01.htm`為`login.php`， `01P02.htm`為`index.php`，`01P03.htm`為`admin.php`，`01P04.htm`為`news.php`
+- `01P01.htm` 改為 `login.php`
+- `01P02.htm` 改為 `index.php`
+- `01P03.htm` 改為 `admin.php`
+- `01P04.htm` 改為 `news.php`
 
 ## 新增圖片資料夾
 
