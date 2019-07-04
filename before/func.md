@@ -1,5 +1,5 @@
 ---
-description: SQL資料庫"測試"完成後，開始"測試"PHP，寫好共用function以及資料庫連接、session等程式碼
+description: 寫好常用function以及資料庫連接、session等程式碼
 ---
 
 # 編寫共用程式碼

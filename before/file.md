@@ -1,5 +1,5 @@
 ---
-description: 在考前安裝XAMPP時利用時間整理各題素材
+description: 整理第一題的素材
 ---
 
 # 整理檔案
