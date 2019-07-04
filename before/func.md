@@ -116,7 +116,7 @@ if(empty($_SESSION["v"]))
 	$_SESSION["v"] = "123";
 	
 	// 資料庫更新人數
-	All("update total set count = count + 1");
+	All("update total set total = total + 1");
 }
 
 // 管理登入按鈕
