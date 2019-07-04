@@ -6,7 +6,7 @@
 	if(empty($_SESSION["v"]))
 	{
 		$_SESSION["v"] = "123";
-		All("update total set count = count + 1");
+		All("update total set total = total + 1");
 	}
 	
 	if(empty($_SESSION["a"]))
@@ -166,8 +166,8 @@
 	$title = "img/".$row["file"];
 	$title_text = $row["text"];
 	
-	$bottom = All(sql("title", 1))[0][0];
-	$total = All(sql("title", 1))[0][0];
+	$bottom = All(sql("bottom", 0))[0][0];
+	$total = All(sql("total", 0))[0][0];
 	
 	$image = "<img src='img/01E01.jpg' onclick='pp(1)'><br>";
 	$result = All(sql("image", 1));
