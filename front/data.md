@@ -43,7 +43,7 @@ $title_text = $row["text"];
 在 sql.php 輸入共用程式碼
 
 ```php
-$bottom = All(sql("title", 1))[0][0];
+$bottom = All(sql("bottom", 0))[0][0];
 ```
 
 ### 插入各頁面
@@ -66,7 +66,7 @@ $bottom = All(sql("title", 1))[0][0];
 這個變數必須要在進站判斷的 `$_SESSION["v"]` 後面，否則人數會少1，重新整理後才正常
 
 ```php
-$total = All(sql("title", 1))[0][0];
+$total = All(sql("total", 0))[0][0];
 ```
 
 ### 插入各頁面

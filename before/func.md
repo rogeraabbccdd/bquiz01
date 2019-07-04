@@ -1,5 +1,5 @@
 ---
-description: SQL資料庫"測試"完成後，開始"測試"PHP，寫好共用function以及資料庫連接、session等程式碼
+description: 寫好常用function以及資料庫連接、session等程式碼
 ---
 
 # 編寫共用程式碼
@@ -116,7 +116,7 @@ if(empty($_SESSION["v"]))
 	$_SESSION["v"] = "123";
 	
 	// 資料庫更新人數
-	All("update total set count = count + 1");
+	All("update total set total = total + 1");
 }
 
 // 管理登入按鈕
