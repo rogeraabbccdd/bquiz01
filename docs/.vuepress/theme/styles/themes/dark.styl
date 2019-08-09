@@ -1,0 +1,31 @@
+.yuu-theme-dark {
+	color: $darkTextColor;
+	background-color: $darkPrimaryBg;
+
+	hr {
+		border-top-color: $darkBorderColor;
+	}
+
+	.content__default {
+		code {
+			color: $purple;
+			background-color: $darkSecondaryBg;
+		}
+
+		a code {
+			color: $accentColor;
+		}
+	}
+
+	tr {
+		border-top-color: $darkBorderColor;
+
+		&:nth-child(2n) {
+			background-color: $darkSecondaryBg;
+		}
+	}
+
+	th, td {
+		border-color: $darkBorderColor;
+	}
+}
