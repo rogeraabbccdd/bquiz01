@@ -71,7 +71,7 @@ module.exports = {
           'back/menu'
         ]
       },
-      ['/end/end', '結語'],
+      ['end/end', '結語'],
     ]
   }
 };
