@@ -4,6 +4,10 @@ description: 編輯amenu.php
 
 # 選單管理
 
+:::tip TIP
+示意圖裡的 `次選單數` 可以不用做，因為題目沒有寫
+:::
+
 ## 編輯表單
 複製前面完成的後台管理頁，貼過來修改
 
@@ -21,7 +25,6 @@ description: 編輯amenu.php
 		<input type="hidden" name="id[]" value="<?=$row["id"]?>">
 		<td><input type="text" value="<?=$row["text"]?>" name="text[<?=$row["id"]?>]"></td>
 		<td><input type="text" value="<?=$row["href"]?>" name="href[<?=$row["id"]?>]"></td>
-		<td><?=count(All("select count(*) from menu where parent =".$row["id"]))[0][0]?></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="display[]" <?=($row["display"])?"checked":""?>></td>
 		<td><input type="checkbox" value="<?=$row["id"]?>" name="del[]"></td>
 		<td><input type="button" onclick="op('#cover','#cvr','view.php?do=up<?=$_GET["redo"]?>&id=<?=$row["id"]?>')" value="編輯次選單"></td>
