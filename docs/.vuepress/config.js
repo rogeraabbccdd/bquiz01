@@ -23,11 +23,12 @@ module.exports = {
       }
     ], 'vuepress-plugin-smooth-scroll',
   ],
+  theme: 'yuu',
   themeConfig: {
     yuu: {
       defaultDarkTheme: true,
-      defaultTheme: 'blue',
-      disableThemeIgnore: true,
+      defaultColorTheme: 'blue',
+      // disableThemeIgnore: true,
       codeTheme: 'okaidia'
     },
     nav: [

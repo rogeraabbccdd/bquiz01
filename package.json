@@ -9,10 +9,12 @@
     "markdown-it-container": "^2.0.0",
     "vue-click-outside": "^1.0.7",
     "vue-github-buttons": "^3.1.0",
-    "vuepress": "^1.0.3",
+    "vuepress": "^1.2.0",
     "vuepress-plugin-container": "^2.0.2",
     "vuepress-plugin-nprogress": "^1.1.1",
     "vuepress-plugin-smooth-scroll": "^0.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vuepress-theme-yuu": "^2.2.0"
+  }
 }
